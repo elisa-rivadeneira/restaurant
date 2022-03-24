@@ -1,0 +1,217 @@
+@extends('adminlte::page')
+
+
+@section('title', 'Platos')
+
+@section('content_header')
+<h1>Platos con sus Insumos</h1>
+@stop
+
+@section("content")
+<a href="/platos/create" class="btn btn-primary mb-4">CREAR</a>
+<div class="row">
+        <div class="col">
+             @if (session('status'))
+                @if(session('status') == '1')
+                    <div class="alert alert-success">
+                     Se guardó
+                    </div>
+                @else
+                    <div class="alert alert-danger">
+                     {{ session('status') }}
+                    </div>
+                @endif
+            @endif
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <table id="platos" class="table">
+                <thead  class="bg-primary text-white">
+                    <tr>
+                        <th> # </th>
+                        <th>Nombre</th>
+                        <th>Categoria</th>
+                        <th>Costo</th>
+                        <th>Precio</th>
+                        <th>Insumos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($platos as $value)
+                        <tr>
+                            <td>{{ $value->id }}</td>
+                            <td>{{ $value->nombre }}</td>
+                            <td>{{ $value->categoria }}</td>
+                            <td>{{ $value->costo }}</td>
+                            <td>{{ $value->precio }}</td>
+                            <td>
+                           
+                            <form action="{{route ('platos.destroy', $value->id) }}" method="POST">
+                                @csrf
+                                <!-- <button type="button" class="btn btn-primary " data-id="{ $value->id }" id="costosinsumos" data-toggle="modal" data-target="#exampleModalCenter">
+                                    Costos
+                                </button> -->
+                                <a href="#myModal" data-toggle="modal" id="{ $value->id }" data-target="#edit-modal">Edit</a>
+                                <button type="button" class="btn btn-primary  editCustomer " data-id="{ $value->id }" id="costosinsumos" data-toggle="modal" data-target="#exampleModalCenter">
+
+                                boton
+                                </button>
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Borrar</button>    
+                                </form>  
+
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+@if(count($insumos) > 0)
+
+@endif
+
+
+
+
+
+
+
+
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" class="text-center">Insumos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+
+
+      <div class="row">
+        <div class="col">
+            <table id="platos" class="table">
+                
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Cantidad</th>
+                            <th>Costo</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+               
+                    <tbody> 
+                        @foreach($insumos as $value)
+                            <tr>
+                                <td>{{$value->nombre}}</td>
+                                <td>{{$value->cantidad_c}}</td>
+                                <td>{{$value->costo}}</td>
+                                <td>{{$value->costo * $value->cantidad_c }}</td>
+                            </tr>
+                        @endforeach
+                     </tbody>
+            </table>
+        </div>
+    </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="modal fade" id="ajaxModel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modelHeading"></h4>
+            </div>
+            <div class="modal-body">
+                <form id="CustomerForm" name="CustomerForm" class="form-horizontal">
+                   <input type="hidden" name="Customer_id" id="Customer_id">
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value="" maxlength="50" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Details</label>
+                        <div class="col-sm-12">
+                            <textarea id="detail" name="detail" required="" placeholder="Enter Details" class="form-control"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-offset-2 col-sm-10">
+                     <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Save changes
+                     </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+@endsection
+
+@section('css')
+    <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+@stop
+
+@section('js')
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#platos').DataTable({
+                "lengthMenu":[[5,10,20,50,-1], [5,10,20,50,"All"]]
+            });
+        } );
+    </script>
+
+
+<script type="text/javascript">
+
+$('body').on('click', '.editCustomer', function () {
+      var Customer_id = $(this).data('id');
+      $.get("" +'/' + Customer_id +'/edit', function (data) {
+          $('#modelHeading').html("Edit Customer");
+          $('#saveBtn').val("edit-user");
+          $('#ajaxModel').modal('show');
+          $('#Customer_id').val(data.id);
+          $('#name').val(data.name);
+          $('#detail').val(data.detail);
+      })
+   });
+
+</script>
+@stop
