@@ -27,15 +27,15 @@
         </div>
 
         <div class="row mb-2">
-            <div class="col-md-6">
+            <div class="col-md-12 col-lg-6">
             @can('admin.config.create')
-                <a href="/config/create" class="btn btn-primary mb-4" >CONFIGURAR NUEVO DÍA</a>
+                <a href="/config/create" class="col-md-12 col-lg-6 btn btn-primary mb-4" >CONFIGURAR NUEVO DÍA</a>
             @endcan
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-12 col-lg-6">
                 @can('admin.config.create')
-                    <a href="/config/edit/{{$last_config_id}}" class="btn btn-warning mb-4 float-right" >EDITAR DÍA</a>
+                    <a href="/config/edit/{{$last_config_id}}" class=" col-md-12 col-lg-6 btn btn-warning float-right" >EDITAR DÍA</a>
                 @endcan
             </div>
         </div><!-- /.container-fluid -->
