@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Orden;
 use App\Models\Plato;
+use App\Models\Menu;
 use App\Models\Entrada;
 use App\Models\User;
 use Carbon\Carbon;
@@ -44,25 +45,27 @@ class VentaController extends Controller
 
     public function diario()
     {
+        $diaconfig = DB::table('configs')->latest('id')->first()->dia;
 
-
-        $totalventashoy = Orden::where('status', '2')->whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))
+        $totalventashoy = Orden::where('status', '2')->whereDate('created_at', '=', $diaconfig)
             ->get();
         $nroventas = count($totalventashoy);
-        $ventadia = $totalventashoy = Orden::where('status', '2')->whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))
+        $ventadia = $totalventashoy = Orden::where('status', '2')->whereDate('created_at', '=', $diaconfig)
             ->sum('total');
 
-        $idordens = Orden::where('status', '2')->whereDate('created_at', '=', Carbon::now())->pluck('id');
+        $idordens = Orden::where('status', '2')->whereDate('created_at', '=',  $diaconfig)->pluck('id');
+
+
         $datos = array(); // defined the $data here out of loop
 
         foreach ($idordens as $idorden) {
 
-            $platos = Orden::find($idorden)->platos;
+            $menus = Orden::find($idorden)->menus;
 
-            foreach ($platos as $plato) {
-                $platoid = $plato->pivot->plato_id;
-                $cantidad = $plato->pivot->cantidad;
-                $plato = Plato::find($platoid);
+            foreach ($menus as $menu) {
+                $menuid = $menu->pivot->menu_id;
+                $cantidad = $menu->pivot->cantidad;
+                $plato = Menu::find($menuid);
 
                 $datos [] = [
                     'cantidad' => $cantidad,
@@ -89,7 +92,7 @@ class VentaController extends Controller
 
 
 
-        return view('venta.diario')->with('items', $totalventashoy)->with('nroventas', $nroventas)->with('ventadia', $ventadia)->with('datos', $datos);
+        return view('venta.diario')->with('items', $totalventashoy)->with('nroventas', $nroventas)->with('ventadia', $ventadia)->with('datos', $datos)->with('diaconfig', $diaconfig);;
 
 
     }

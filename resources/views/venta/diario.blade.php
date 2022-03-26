@@ -119,7 +119,7 @@
               <h5 class="mb-2 mt-4">VENTAS DIARIAS</h5>
             <div class="row">
                 <div class="col-lg-6 col-12 m-3"  >
-                 SELECCIONA EL DÍA: <input type="date" name="dia" id="dia" onchange="establecer_dia(this.value)">
+                 SELECCIONA EL DÍA: <input type="date" name="dia" id="dia" value="{{$diaconfig}}" onchange="establecer_dia(this.value)">
 
                 </div>
             </div>
@@ -193,7 +193,7 @@
                 <div class="col-md-9" id="platos">
                     <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title">PLATOS A LA CARTA VENDIDOS</h3>
+                            <h3 class="card-title">MENUS VENDIDOS</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                                 </button>

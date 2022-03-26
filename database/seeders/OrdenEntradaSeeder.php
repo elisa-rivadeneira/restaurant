@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +20,7 @@ class OrdenEntradaSeeder extends Seeder
             'entrada_id'=>'1',
             'cantidad'=>'4',
             'estado'=>'0',
-            'created_at'=>'2022-02-16 13:05:38',
+            'created_at' => Carbon::now(),
 
         ]);
 
@@ -28,7 +29,7 @@ class OrdenEntradaSeeder extends Seeder
             'entrada_id'=>'3',
             'cantidad'=>'2',
             'estado'=>'0',
-            'created_at'=>'2022-02-16 13:05:38',
+            'created_at' => Carbon::now(),
 
         ]);
 
@@ -37,7 +38,7 @@ class OrdenEntradaSeeder extends Seeder
             'entrada_id'=>'6',
             'cantidad'=>'1',
             'estado'=>'0',
-            'created_at'=>'2022-02-16 13:05:38',
+            'created_at' => Carbon::now(),
 
         ]);
 
@@ -46,7 +47,7 @@ class OrdenEntradaSeeder extends Seeder
             'entrada_id'=>'4',
             'cantidad'=>'4',
             'estado'=>'0',
-            'created_at'=>'2022-02-16 13:05:38',
+            'created_at' => Carbon::now(),
 
         ]);
 
@@ -55,7 +56,7 @@ class OrdenEntradaSeeder extends Seeder
             'entrada_id'=>'5',
             'cantidad'=>'2',
             'estado'=>'0',
-            'created_at'=>'2022-02-16 13:05:38',
+            'created_at' => Carbon::now(),
 
         ]);
 
@@ -64,7 +65,7 @@ class OrdenEntradaSeeder extends Seeder
             'entrada_id'=>'6',
             'cantidad'=>'3',
             'estado'=>'0',
-            'created_at'=>'2022-02-16 13:05:38',
+            'created_at' => Carbon::now(),
 
         ]);
 
@@ -74,7 +75,7 @@ class OrdenEntradaSeeder extends Seeder
             'entrada_id'=>'7',
             'cantidad'=>'2',
             'estado'=>'0',
-            'created_at'=>'2022-02-16 13:05:38',
+            'created_at' => Carbon::now(),
 
         ]);
 
@@ -84,7 +85,7 @@ class OrdenEntradaSeeder extends Seeder
             'entrada_id'=>'5',
             'cantidad'=>'4',
             'estado'=>'0',
-            'created_at'=>'2022-02-16 13:05:38',
+            'created_at' => Carbon::now(),
 
         ]);
 
@@ -93,7 +94,7 @@ class OrdenEntradaSeeder extends Seeder
             'entrada_id'=>'4',
             'cantidad'=>'1',
             'estado'=>'0',
-            'created_at'=>'2022-02-16 13:05:38',
+            'created_at' => Carbon::now(),
 
         ]);
         DB::table('orden_entrada')->insert([
@@ -101,7 +102,7 @@ class OrdenEntradaSeeder extends Seeder
             'entrada_id'=>'3',
             'cantidad'=>'8',
             'estado'=>'0',
-            'created_at'=>'2022-02-16 13:05:38',
+            'created_at' => Carbon::now(),
 
         ]);
     }

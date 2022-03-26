@@ -24,7 +24,7 @@ class Orden extends Model
 
     public function menus()
     {
-        return $this->belongsToMany(Menu::class, 'orden_menu')->withPivot('cantidad', 'entrada_id');
+        return $this->belongsToMany(Menu::class, 'orden_menu')->withPivot('cantidad');
     }
 
 }
