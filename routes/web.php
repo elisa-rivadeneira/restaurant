@@ -91,7 +91,6 @@ Route::get('/cocina/{id}/statuse1', 'App\Http\Controllers\CocinaController@statu
 
 
 
-Route::get('/prueba', 'App\Http\Controllers\VentaController@prueba');
 Route::get('/otraprueba', 'App\Http\Controllers\VentaController@otraprueba');
 
 
@@ -121,4 +120,5 @@ Route::get('/dashboard/crud/create', function(){
 Route::get('/getPlato/{id}', 'App\Http\Controllers\OrdenPlatoController@getPlato')->name('getPlato');
 Route::get('/getPrecio/{id}', 'App\Http\Controllers\OrdenPlatoController@getPrecio')->name('getPrecio');
 
+Route::get('/prueba', 'App\Http\Controllers\PruebaController@prueba');
 

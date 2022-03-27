@@ -16,10 +16,11 @@ class Config extends Model
 
     public function menus()
     {
-        return $this->hasMany(Menu::class, 'config_menu')->withPivot('porciones');
+        return $this->hasMany(ConfigMenu::class);
     }
     public function entradas()
     {
-        return $this->hasMany(Entrada::class, 'config_entrada')->withPivot('porciones');
+        return $this->hasMany(ConfigEntrada::class);
+ //       return $this->hasMany(Entrada::class, 'config_entrada')->withPivot('porciones');
     }
 }

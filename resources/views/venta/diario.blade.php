@@ -105,123 +105,184 @@
 @section("content")
 
 
-<div class="wrapper">
+<div class="wrapper ml-4" >
 
 
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="contentss" >
 
         <!-- Main content -->
         <section class="content">
 
 
               <h5 class="mb-2 mt-4">VENTAS DIARIAS</h5>
-            <div class="row">
-                <div class="col-lg-6 col-12 m-3"  >
+            <div class="row" >
+                <div class="col-12 m-3"  >
                  SELECCIONA EL DÍA: <input type="date" name="dia" id="dia" value="{{$diaconfig}}" onchange="establecer_dia(this.value)">
 
                 </div>
             </div>
-            <div class="row bg-info p-3 col-md-9">
+            <div class="row bg-info p-3 col-md-12" >
                 <div class="col-md-4">DIA SELECCIONADO: </div>
                 <div class="col-md-2" id="diaseleccionado"> </div>
             </div>
 
-            <div class="row">
+            <div class="row" >
 
 
             <h5 class="mb-2 mt-4">VENTAS DE HOY</h5>
             </div>
-            <div class="row">
-                <div class="col-md-4">
+            <div class="row col-md-12" >
+                <div class=" row col-md-12">
+                    <div class="col-md-5 ">
 
-                    <div class="small-box bg-info">
-                        <div class="inner" id="nroventas">
-                            <h3>{{$nroventas}}</h3>
-                            <p>Ordenes</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">
-                            Mas info <i class="fas fa-arrow-circle-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-5">
-
-                    <div class="small-box bg-warning" id="ventadia">
-                        <div class="inner">
-                            <h3>S/.{{$ventadia}}</h3>
-                            <p>Ventas Totales</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-user-plus"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">
-                            More info <i class="fas fa-arrow-circle-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-
-          <!--
-                <div class="col-md-9">
-                    <div class="card card-success">
-                        <div class="card-header">
-                            <h3 class="card-title">PLATO MAS VENDIDO</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                                </button>
+                        <div class="small-box bg-info">
+                            <div class="inner" id="nroventas">
+                                <h3>{{$platosvendidos}}</h3>
+                                <p>Platos Vendidos</p>
                             </div>
-
+                            <div class="icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">
+                                Mas info <i class="fas fa-arrow-circle-right"></i>
+                            </a>
                         </div>
-
-                        <div class="card-body">
-                            Mazamorra Morada
-                        </div>
-
-
-
                     </div>
 
-                    -->
+                    <div class="col-md-7">
 
-                </div>
-                <div class="col-md-9" id="platos">
-                    <div class="card card-success">
-                        <div class="card-header">
-                            <h3 class="card-title">MENUS VENDIDOS</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                                </button>
+                        <div class="small-box bg-warning" id="ventadia">
+                            <div class="inner">
+                                <h3>S/.{{$totalmenusvendidos}}</h3>
+                                <p>Ventas Totales</p>
                             </div>
+                            <div class="icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">
+                                More info <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12"> EGRESOS DE HOY <BR></div>
+                    <div class="row col-md-12" >
+                        <div class="col-md-5 ">
+
+                            <div class="small-box bg-info">
+                                <div class="inner" id="nroventas">
+                                    <h3>{{$menuspreparados}}</h3>
+                                    <p>Menus preparados</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Mas info <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-7">
+
+                            <div class="small-box bg-warning" id="ventadia">
+                                <div class="inner">
+                                    <h3>S/.{{$sumatotal}}</h3>
+                                    <p>Costos Totales</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-12">MENUS PREPARADOS </div>
+
+
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">RESUMEN MENUS</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <div class="card-body" id="platosvendidos">
+
+
+                                <div class="row bg-primary">
+                                    <div class="col-md-3 "> PREPARADOS</div>
+                                    <div class="col-md-2 "> VENDIDOS</div>
+                                    <div class="col-md-7">PLATOS DE FONDO</div>
+                                </div>
+                                <div class="row">
+
+                                    @foreach ($datosmenur as $dato)
+                                        <div class="col-md-3"> {{$dato['cantidadini']}}</div>
+                                        <div class="col-md-2"> {{$dato['cantidadven']}}</div>
+                                        <div class="col-md-7">{{$dato['plato']}}</div>
+
+
+
+
+                                    @endforeach
+                                </div>
+
+
+                            </div>
+
+
 
                         </div>
 
-                        <div class="card-body" id="platosvendidos">
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">RESUMEN ENTRADAS</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
 
-
-                            <div class="row bg-primary">
-                            <div class="col-md-2 "> CANT</div>
-                            <div class="col-md-10">PLATOS</div>
                             </div>
-                            <div class="row">
 
-                           @foreach ($datos as $dato)
-                                <div class="col-md-2"> {{$dato['cantidad']}}</div>
-                                <div class="col-md-10">{{$dato['plato']}}</div>
+                            <div class="card-body" id="platosvendidos">
 
 
+                                <div class="row bg-primary">
+                                    <div class="col-md-3 "> PREPARADOS</div>
+                                    <div class="col-md-2 "> VENDIDOS</div>
+                                    <div class="col-md-7">ENTRADAS</div>
+                                </div>
+                                <div class="row">
+
+                                    @foreach ($datosentradar as $dato)
+                                        <div class="col-md-3"> {{$dato['cantidadini']}}</div>
+                                        <div class="col-md-2"> {{$dato['cantidadven']}}</div>
+                                        <div class="col-md-7">{{$dato['plato']}}</div>
 
 
-                            @endforeach
+
+
+                                    @endforeach
+                                </div>
+
+
                             </div>
+
 
 
                         </div>
+
+
+
 
 
 
@@ -229,6 +290,9 @@
 
                 </div>
 
+
+
+            </div>
             </div>
             <!-- =========================================================== -->
 

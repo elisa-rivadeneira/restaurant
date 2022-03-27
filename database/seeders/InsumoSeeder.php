@@ -18,7 +18,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Arroz',
             'costo'=>'4',
             'unidad'=>'kg',
-            'cantidad'=>'20',
+            'cantidad'=>'0',
 
         ]);
 
@@ -26,15 +26,14 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Pollo',
             'costo'=>'7',
             'unidad'=>'kg',
-            'cantidad'=>'10',
-
+            'cantidad'=>'0',
         ]);
 
         DB::table('insumos')->insert([
             'nombre'=>'Papa',
             'costo'=>'2',
             'unidad'=>'kg',
-            'cantidad'=>'20',
+            'cantidad'=>'0',
 
         ]);
 
@@ -42,7 +41,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Frejoles',
             'costo'=>'9',
             'unidad'=>'kg',
-            'cantidad'=>'15',
+            'cantidad'=>'0',
 
         ]);
 
@@ -50,7 +49,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Limon',
             'costo'=>'3',
             'unidad'=>'kg',
-            'cantidad'=>'10',
+            'cantidad'=>'0',
 
         ]);
 
@@ -58,7 +57,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Azucar',
             'costo'=>'4',
             'unidad'=>'kg',
-            'cantidad'=>'10',
+            'cantidad'=>'0',
 
         ]);
 
@@ -66,7 +65,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Fideos',
             'costo'=>'5',
             'unidad'=>'kg',
-            'cantidad'=>'20',
+            'cantidad'=>'0',
 
         ]);
 
@@ -74,7 +73,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Espinaca',
             'costo'=>'6',
             'unidad'=>'kg',
-            'cantidad'=>'4',
+            'cantidad'=>'0',
 
         ]);
 
@@ -82,7 +81,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Pimiento',
             'costo'=>'1',
             'unidad'=>'und',
-            'cantidad'=>'20',
+            'cantidad'=>'0',
 
         ]);
 
@@ -90,7 +89,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Tomate',
             'costo'=>'1',
             'unidad'=>'kg',
-            'cantidad'=>'10',
+            'cantidad'=>'0',
 
         ]);
 
@@ -98,7 +97,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Cebolla',
             'costo'=>'2.5',
             'unidad'=>'kg',
-            'cantidad'=>'8',
+            'cantidad'=>'0',
 
         ]);
 
@@ -106,7 +105,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Leche',
             'costo'=>'3.00',
             'unidad'=>'lt',
-            'cantidad'=>'20',
+            'cantidad'=>'0',
 
         ]);
 
@@ -114,7 +113,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Sillao',
             'costo'=>'4.00',
             'unidad'=>'lt',
-            'cantidad'=>'20',
+            'cantidad'=>'0',
 
         ]);
 
@@ -122,7 +121,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Vinagre',
             'costo'=>'3.40',
             'unidad'=>'lt',
-            'cantidad'=>'4',
+            'cantidad'=>'0',
 
         ]);
 
@@ -130,7 +129,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Aji Amarillo',
             'costo'=>'3.00',
             'unidad'=>'kg',
-            'cantidad'=>'4',
+            'cantidad'=>'0',
 
         ]);
 
@@ -138,7 +137,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Ajo',
             'costo'=>'9.00',
             'unidad'=>'kg',
-            'cantidad'=>'2',
+            'cantidad'=>'0',
 
         ]);
 
@@ -146,14 +145,14 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Lechuga',
             'costo'=>'1.00',
             'unidad'=>'und',
-            'cantidad'=>'8',
+            'cantidad'=>'0',
 
         ]);
         DB::table('insumos')->insert([
             'nombre'=>'Col',
             'costo'=>'2.00',
             'unidad'=>'und',
-            'cantidad'=>'5',
+            'cantidad'=>'0',
 
         ]);
 
@@ -161,7 +160,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Brocoli',
             'costo'=>'4.00',
             'unidad'=>'und',
-            'cantidad'=>'7',
+            'cantidad'=>'0',
 
         ]);
 
@@ -169,7 +168,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Pepinos',
             'costo'=>'0.70',
             'unidad'=>'und',
-            'cantidad'=>'10',
+            'cantidad'=>'0',
 
         ]);
 
@@ -177,7 +176,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Lentejas',
             'costo'=>'6.00',
             'unidad'=>'kg',
-            'cantidad'=>'10',
+            'cantidad'=>'0',
 
         ]);
 
@@ -185,7 +184,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Arverjitas',
             'costo'=>'4.00',
             'unidad'=>'kg',
-            'cantidad'=>'10',
+            'cantidad'=>'0',
 
         ]);
 
@@ -193,7 +192,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Garbanzos',
             'costo'=>'8.00',
             'unidad'=>'kg',
-            'cantidad'=>'10',
+            'cantidad'=>'0',
 
         ]);
 
@@ -201,7 +200,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Pallares',
             'costo'=>'9.00',
             'unidad'=>'kg',
-            'cantidad'=>'10',
+            'cantidad'=>'0',
 
         ]);
 
@@ -209,7 +208,7 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Queso',
             'costo'=>'18.00',
             'unidad'=>'kg',
-            'cantidad'=>'10',
+            'cantidad'=>'0',
 
         ]);
 
@@ -217,8 +216,24 @@ class InsumoSeeder extends Seeder
             'nombre'=>'Pescado',
             'costo'=>'5.00',
             'unidad'=>'kg',
-            'cantidad'=>'10',
+            'cantidad'=>'0',
 
         ]);
+        DB::table('insumos')->insert([
+            'nombre'=>'Quinua',
+            'costo'=>'9.00',
+            'unidad'=>'kg',
+            'cantidad'=>'0',
+
+        ]);
+
+        DB::table('insumos')->insert([
+            'nombre'=>'Carne de Res',
+            'costo'=>'15.00',
+            'unidad'=>'kg',
+            'cantidad'=>'0',
+
+        ]);
+
     }
 }

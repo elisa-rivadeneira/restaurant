@@ -19,6 +19,8 @@
         <div class="mb-3">
             <label for="" class="form-label">Costo </label>
             <input id="costo" name="costo" type="text" class="form-control" tabindex="2">
+
+            <input id="cantidad" name="cantidad" value="0" class="form-control" type="hidden" tabindex="2">
         </div>
 
         <div class="mb-3">

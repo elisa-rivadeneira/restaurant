@@ -42,7 +42,6 @@ class OrdenController extends Controller
         $categorias = Categoria::all();
         $mesas = Mesa::all();
         $platos = Plato::all();
- //       $entradas = Entrada::where('status','1')->get();
         $date_now = date('d-m-Y');
         $last_config_id = DB::table('configs')->latest('id')->first()->id;
 
@@ -56,10 +55,6 @@ class OrdenController extends Controller
             ->where('config_entrada.config_id',$last_config_id )
             ->get();
 
-
-    //    where('status','1')->innerjoin('config_menu')->where('config_id', $last_config_id)
-
-    //    $ConfigMenu = ConfigMenu::where('config_id', $last_config_id)->get();
         return view("orden.create",  compact("categorias", "platos", "date_now", "entradas", "menus", "mesas"));
 
     }

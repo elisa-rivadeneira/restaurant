@@ -21,10 +21,16 @@ class Orden extends Model
     {
         return $this->belongsToMany(Plato::class, 'orden_plato')->withPivot('cantidad');
     }
-
+    public function entradas()
+    {
+        return $this->belongsToMany(Entrada::class, 'orden_entrada')->withPivot('cantidad');
+    }
     public function menus()
     {
         return $this->belongsToMany(Menu::class, 'orden_menu')->withPivot('cantidad');
     }
+
+
+
 
 }

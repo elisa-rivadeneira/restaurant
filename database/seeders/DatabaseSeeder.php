@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
         $this->call(OrdenMenuSeeder::class);
         $this->call(OrdenEntradaSeeder::class);
         $this->call(ConfigSeeder::class);
+        $this->call(ConfigMenuSeeder::class);
+        $this->call(ConfigEntradaSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
     }

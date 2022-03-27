@@ -102,7 +102,14 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $insumos = Insumo::all();
+        $menuinsumos = MenuInsumo::select('menu_insumo.*','insumos.nombre', 'insumos.costo')
+                        ->where('menu_insumo.menu_id', $id)
+                        ->join('insumos', 'insumos.id', '=','menu_insumo.insumo_id')
+                        ->get();
+        $menu = Menu::find($id);
+
+        return view("menuinsumo.edit", compact("insumos", "menu", "menuinsumos"));
     }
 
     /**
@@ -114,7 +121,71 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        try {
+            DB::beginTransaction();
+
+            $menu = Menu::find($id);
+            $menu->nombre = $request->get('nombre');
+            $menu->porciones = $request->get('porciones');
+            $menu->costo = $request->get('costo');
+            $menu->save();
+            $menuinsumos = MenuInsumo::where('menu_id', $id)->delete();
+
+
+            if (isset($input["insumo_id"])){
+            foreach($input["insumo_id"] as $key => $value){
+                MenuInsumo::create([
+                    "insumo_id"=>$value,
+                    "menu_id"=>$menu->id,
+                    "cantidad" => $input["cantidades"][$key]
+                ]);
+
+                $ins = Insumo::find($value);
+                $ins->update(["cantidad"=> $ins->cantidad - $input["cantidades"][$key]]);
+            }
+
+            DB::commit();
+            return redirect("/menus")->with('status', '1');
+        }} catch (\Exception $e) {
+            DB::rollBack();
+            return redirect("/menus")->with('status', $e->getMessage());
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        return redirect('/config');
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     /**

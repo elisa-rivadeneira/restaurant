@@ -54,6 +54,8 @@
                             <form action="{{route ('menus.destroy', $value->id) }}" method="POST">
                                 @csrf
                                 <a class="btn btn-info" id="VerInsumosMenu" data-id={{$value->id}} data-toggle="modal"  data-target="#VerInsumosMenu{{$value->id}}" >Ver Insumos</a>
+                                <a href="/menus/{{ $value->id }}/edit/" class="btn btn-info" id="EditarInsumosMenu" data-id={{$value->id}} >Editar</a>
+
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Borrar</button>
                             </form>

@@ -16,6 +16,13 @@ class Entrada extends Model
         'porciones'
     ];
 
+    public function insumos(){
+        return $this->belongsToMany('App\Models\Insumo');
+    }
+
+    public function ordens(){
+        return $this->belongsToMany(Orden::class, 'orden_entrada');
+    }
     public function config(){
         return $this->belongsTo(Orden::class, 'config_entrada');
     }

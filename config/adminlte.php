@@ -374,6 +374,7 @@ return [
                     'text'    => 'REPORTES',
                     'icon'    => 'fas fa-fw fa-share',
                     'submenu' => [
+                        /*
                         [
                             'text' => 'ANUAL',
                             'url'  => 'anual',
@@ -386,6 +387,7 @@ return [
                             'text' => 'SEMANAL',
                             'url'  => 'semanal',
                         ],
+                        */
 
                         [
                             'text' => 'DIARIO',

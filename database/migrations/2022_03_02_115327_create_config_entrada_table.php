@@ -18,6 +18,8 @@ class CreateConfigEntradaTable extends Migration
             $table->unsignedBigInteger('config_id');
             $table->unsignedBigInteger('entrada_id');
             $table->unsignedBigInteger('porciones');
+            $table->unsignedBigInteger('porcionesini');
+
             $table->timestamps();
 
             $table->foreign('config_id')->references('id')->on('configs')->onDelete('cascade');

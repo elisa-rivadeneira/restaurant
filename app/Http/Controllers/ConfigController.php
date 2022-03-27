@@ -218,7 +218,9 @@ class ConfigController extends Controller
                         ConfigMenu::create([
                             "config_id" => $config->id,
                             "menu_id" => $value,
-                            "porciones" => $input["porciones"][$key]
+                            "porciones" => $input["porciones"][$key],
+                            "porcionesini" => $input["porciones"][$key]
+
                         ]);
 
                         $menu = Menu::find($value);
@@ -233,8 +235,9 @@ class ConfigController extends Controller
                     ConfigEntrada::create([
                         "config_id" =>  $config->id,
                         "entrada_id" => $value,
-                        "porciones" => $input["porcionesentrada"][$key]
-                    ]);
+                        "porciones" => $input["porcionesentrada"][$key],
+                        "porcionesini" => $input["porcionesentrada"][$key]
+                   ]);
                 }
             }
             DB::commit();

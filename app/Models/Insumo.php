@@ -13,8 +13,6 @@ class Insumo extends Model
         'nombre',
         'costo',
         'unidad',
-        'cantidad'
-
       ];
 
     public function platos(){

@@ -37,10 +37,12 @@ class InsumoController extends Controller
      */
     public function store(Request $request)
     {
+
         $insumos = new Insumo();
         $insumos->nombre = $request->get('nombre');
         $insumos->costo = $request->get('costo');
         $insumos->unidad = $request->get('unidad');
+        $insumos->cantidad = $request->get('cantidad');
 
         $insumos->save();
 
@@ -67,6 +69,7 @@ class InsumoController extends Controller
     public function edit($id)
     {
         $insumo=Insumo::find($id);
+
         return view('insumo.edit')->with('insumo', $insumo);
     }
 
