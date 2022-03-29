@@ -119,7 +119,8 @@
               <h5 class="mb-2 mt-4">VENTAS DIARIAS</h5>
             <div class="row" >
                 <div class="col-12 m-3"  >
-                 SELECCIONA EL DÍA: <input type="date" name="dia" id="dia" value="{{$diaconfig}}" onchange="establecer_dia(this.value)">
+                 SELECCIONA EL DÍA: <input type="date" name="dia" id="dia" value="{{$diaconfig}}" onchange="establecereldia(this.value)">
+                    <a id="buttomday" href="/seleccionardia/{{$diaconfig}}" class="btn btn-warning" id="changeStatus" data-id={{$diaconfig}}">  CREAR REPORTE</a>
 
                 </div>
             </div>
@@ -139,8 +140,8 @@
 
                         <div class="small-box bg-info">
                             <div class="inner" id="nroventas">
-                                <h3>{{$platosvendidos}}</h3>
-                                <p>Platos Vendidos</p>
+                                <h3>{{$ventas}}</h3>
+                                <p>Menus Vendidos</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-shopping-cart"></i>
@@ -226,8 +227,8 @@
                                 <div class="row">
 
                                     @foreach ($datosmenur as $dato)
-                                        <div class="col-md-3"> {{$dato['cantidadini']}}</div>
-                                        <div class="col-md-2"> {{$dato['cantidadven']}}</div>
+                                        <div class="col-md-3"> {{$dato['cantidadmenuini']}}</div>
+                                        <div class="col-md-2"> {{$dato['cantidadmenuven']}}</div>
                                         <div class="col-md-7">{{$dato['plato']}}</div>
 
 
@@ -386,7 +387,11 @@
 
     }
 
+function establecereldia(dia){
+    $("#diaseleccionado").html(dia);
+    $("#buttomday").attr("href", "/seleccionardia/"+dia);
 
+    }
 </script>
 
 

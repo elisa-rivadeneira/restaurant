@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,7 +16,13 @@ class ConfigSeeder extends Seeder
     public function run()
     {
         DB::table('configs')->insert([
-            'dia'=>'2022-03-14',
+            'dia'=>0000-00-00,
+            'preciomenu'=>'0'
+
+        ]);
+
+        DB::table('configs')->insert([
+            'dia'=>Carbon::now(),
             'preciomenu'=>'7'
 
         ]);

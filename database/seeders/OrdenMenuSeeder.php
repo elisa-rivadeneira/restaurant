@@ -17,8 +17,8 @@ class OrdenMenuSeeder extends Seeder
     {
         DB::table('orden_menu')->insert([
             'orden_id'=>'1',
-            'menu_id'=>'1',
-            'cantidad'=>'4',
+            'menu_id'=>'4',
+            'cantidad'=>'1',
             'estado'=>'0',
             'created_at' => Carbon::now(),
 
@@ -26,7 +26,7 @@ class OrdenMenuSeeder extends Seeder
 
         DB::table('orden_menu')->insert([
             'orden_id'=>'1',
-            'menu_id'=>'3',
+            'menu_id'=>'4',
             'cantidad'=>'2',
             'estado'=>'0',
             'created_at' => Carbon::now(),
@@ -35,7 +35,7 @@ class OrdenMenuSeeder extends Seeder
 
         DB::table('orden_menu')->insert([
             'orden_id'=>'1',
-            'menu_id'=>'6',
+            'menu_id'=>'7',
             'cantidad'=>'1',
             'estado'=>'0',
             'created_at' => Carbon::now(),
@@ -44,8 +44,8 @@ class OrdenMenuSeeder extends Seeder
 
         DB::table('orden_menu')->insert([
             'orden_id'=>'2',
-            'menu_id'=>'4',
-            'cantidad'=>'4',
+            'menu_id'=>'7',
+            'cantidad'=>'2',
             'estado'=>'0',
             'created_at' => Carbon::now(),
 
@@ -53,7 +53,7 @@ class OrdenMenuSeeder extends Seeder
 
         DB::table('orden_menu')->insert([
             'orden_id'=>'2',
-            'menu_id'=>'5',
+            'menu_id'=>'8',
             'cantidad'=>'2',
             'estado'=>'0',
             'created_at' => Carbon::now(),
@@ -62,7 +62,7 @@ class OrdenMenuSeeder extends Seeder
 
         DB::table('orden_menu')->insert([
             'orden_id'=>'3',
-            'menu_id'=>'6',
+            'menu_id'=>'8',
             'cantidad'=>'3',
             'estado'=>'0',
             'created_at' => Carbon::now(),
@@ -82,7 +82,7 @@ class OrdenMenuSeeder extends Seeder
 
         DB::table('orden_menu')->insert([
             'orden_id'=>'5',
-            'menu_id'=>'8',
+            'menu_id'=>'2',
             'cantidad'=>'4',
             'estado'=>'0',
             'created_at' => Carbon::now(),
@@ -91,11 +91,19 @@ class OrdenMenuSeeder extends Seeder
 
         DB::table('orden_menu')->insert([
             'orden_id'=>'6',
-            'menu_id'=>'9',
+            'menu_id'=>'2',
             'cantidad'=>'1',
             'estado'=>'0',
             'created_at' => Carbon::now(),
 
+        ]);
+
+        DB::table('orden_menu')->insert([
+            'orden_id'=>'7',
+            'menu_id'=>'9',
+            'cantidad'=>'4',
+            'estado'=>'0',
+            'created_at' => Carbon::now(),
         ]);
 
     }

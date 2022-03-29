@@ -18,7 +18,7 @@ class OrdenSeeder extends Seeder
         DB::table('ordens')->insert([
             'mesa'=>'01',
             'status'=>'0',
-            'total'=>'49',
+            'total'=>'42',
             'created_at' => Carbon::now(),
 
 
@@ -69,13 +69,16 @@ class OrdenSeeder extends Seeder
         ]);
 
         DB::table('ordens')->insert([
-            'mesa'=>'07',
+            'mesa'=>'08',
             'status'=>'0',
-            'total'=>'56',
+            'total'=>'28',
             'created_at' => Carbon::now(),
 
 
         ]);
+
+
+
 
     }
 }

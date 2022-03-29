@@ -17,6 +17,33 @@ class OrdenEntradaSeeder extends Seeder
     {
         DB::table('orden_entrada')->insert([
             'orden_id'=>'1',
+            'entrada_id'=>'6',
+            'cantidad'=>'4',
+            'estado'=>'0',
+            'created_at' => Carbon::now(),
+
+        ]);
+
+        DB::table('orden_entrada')->insert([
+            'orden_id'=>'1',
+            'entrada_id'=>'2',
+            'cantidad'=>'2',
+            'estado'=>'0',
+            'created_at' => Carbon::now(),
+
+        ]);
+
+        DB::table('orden_entrada')->insert([
+            'orden_id'=>'1',
+            'entrada_id'=>'5',
+            'cantidad'=>'1',
+            'estado'=>'0',
+            'created_at' => Carbon::now(),
+
+        ]);
+
+        DB::table('orden_entrada')->insert([
+            'orden_id'=>'2',
             'entrada_id'=>'1',
             'cantidad'=>'4',
             'estado'=>'0',
@@ -25,85 +52,22 @@ class OrdenEntradaSeeder extends Seeder
         ]);
 
         DB::table('orden_entrada')->insert([
-            'orden_id'=>'1',
-            'entrada_id'=>'3',
-            'cantidad'=>'2',
-            'estado'=>'0',
-            'created_at' => Carbon::now(),
-
-        ]);
-
-        DB::table('orden_entrada')->insert([
-            'orden_id'=>'1',
-            'entrada_id'=>'6',
-            'cantidad'=>'1',
-            'estado'=>'0',
-            'created_at' => Carbon::now(),
-
-        ]);
-
-        DB::table('orden_entrada')->insert([
             'orden_id'=>'2',
             'entrada_id'=>'4',
-            'cantidad'=>'4',
-            'estado'=>'0',
-            'created_at' => Carbon::now(),
-
-        ]);
-
-        DB::table('orden_entrada')->insert([
-            'orden_id'=>'2',
-            'entrada_id'=>'5',
-            'cantidad'=>'2',
-            'estado'=>'0',
-            'created_at' => Carbon::now(),
-
-        ]);
-
-        DB::table('orden_entrada')->insert([
-            'orden_id'=>'3',
-            'entrada_id'=>'6',
             'cantidad'=>'3',
             'estado'=>'0',
             'created_at' => Carbon::now(),
 
         ]);
 
-
-        DB::table('orden_entrada')->insert([
-            'orden_id'=>'4',
-            'entrada_id'=>'7',
-            'cantidad'=>'2',
-            'estado'=>'0',
-            'created_at' => Carbon::now(),
-
-        ]);
-
-
-        DB::table('orden_entrada')->insert([
-            'orden_id'=>'5',
-            'entrada_id'=>'5',
-            'cantidad'=>'4',
-            'estado'=>'0',
-            'created_at' => Carbon::now(),
-
-        ]);
-
-        DB::table('orden_entrada')->insert([
-            'orden_id'=>'6',
-            'entrada_id'=>'4',
-            'cantidad'=>'1',
-            'estado'=>'0',
-            'created_at' => Carbon::now(),
-
-        ]);
         DB::table('orden_entrada')->insert([
             'orden_id'=>'7',
-            'entrada_id'=>'3',
-            'cantidad'=>'8',
+            'entrada_id'=>'4',
+            'cantidad'=>'42',
             'estado'=>'0',
             'created_at' => Carbon::now(),
 
         ]);
+
     }
 }

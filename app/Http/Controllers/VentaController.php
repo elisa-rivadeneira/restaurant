@@ -48,12 +48,18 @@ class VentaController extends Controller
 
     public function diario()
     {
+
         $diaconfig = DB::table('configs')->latest('id')->first()->dia;
         $preciomenu = DB::table('configs')->latest('id')->first()->preciomenu;
 
-        $totalventashoy = Orden::where('status', '2')->whereDate('created_at', '=', $diaconfig)
+
+        $totalventashoy = Orden::whereDate('created_at', '=', $diaconfig)
             ->get();
         $nroventas = count($totalventashoy);
+        $sumadeventas =Orden::sum('total');
+
+        $ventas = $sumadeventas / 7;
+
 
 
         $idconfigultimo = DB::table('configs')->latest('id')->first()->id;
@@ -64,24 +70,41 @@ class VentaController extends Controller
         $datosmenur= array();
         $datosentradar= array();
         $menurs = Config::find($idconfigultimo)->menus;
+
+
             foreach ($menurs as $menur) {
             $menuid = $menur->menu_id;
-            $cantidadini = $menur->porcionesini;
-            $cantidadres = $menur->porciones;
+            $cantidadmenuini = $menur->porcionesini;
+            $cantidadmenures = $menur->porciones;
             $plato = Menu::find($menuid);
 
             $datosmenur [] = [
                 'idmenu' => $menuid,
-                'cantidadini' => $cantidadini,
-                'cantidadres' => $cantidadres,
-                'cantidadven' => $cantidadini - $cantidadres,
+                'cantidadmenuini' => $cantidadmenuini,
+                'cantidadmenures' => $cantidadmenures,
+                'cantidadmenuven' => $cantidadmenuini - $cantidadmenures,
                 'plato' => $plato->nombre,
                 'costo' => $plato->costo,
 
-                'sumaxplato' => $cantidadini * $plato->costo
+                'sumaxplato' => $cantidadmenuini * $plato->costo
             ];
 
-        }
+
+
+            }
+
+
+
+
+        $menuspreparados = '0';
+        $sumatotal = '0';
+        if(isset($datosmenur)){
+            foreach ($datosmenur as $datomenu){
+
+                $sumatotal = $datomenu['sumaxplato'] + $sumatotal;
+                $menuspreparados = $datomenu['cantidadmenuini'] + $menuspreparados;
+
+            }}
 
         $entradars = Config::find($idconfigultimo)->entradas;
             foreach ($entradars as $entradar) {
@@ -104,19 +127,13 @@ class VentaController extends Controller
 
 
 
-        $menuspreparados = '0';
-        $sumatotal = '0';
-        if(isset($datosmenur)){
-        foreach ($datosmenur as $datomenu){
 
-            $sumatotal = $datomenu['sumaxplato'] + $sumatotal;
-            $menuspreparados = $datomenu['cantidadini'] + $cantidadini;
 
-            }}
+
 
         //fin egresos
 
-        $idordens = Orden::where('status', '2')->whereDate('created_at', '=',  $diaconfig)->pluck('id');
+        $idordens = Orden::whereDate('created_at', '=',  $diaconfig)->pluck('id');
 
 
         $datos = array(); // defined the $data here out of loop
@@ -124,14 +141,12 @@ class VentaController extends Controller
         $totalmenusvendidos = '0';
         $platosvendidos = '0';
 
+
         foreach ($idordens as $idorden) {
 
             $menus = Orden::find($idorden)->menus;
-
             $entradas = Orden::find($idorden)->entradas;
 
-
-            dd($platosvendidos);
             foreach ($menus as $menu) {
                 $menuid = $menu->pivot->menu_id;
                 $cantidad = $menu->pivot->cantidad;
@@ -148,6 +163,7 @@ class VentaController extends Controller
                     $platosvendidos = $dato['cantidad'] + $platosvendidos;
                 }
             }
+
             $totalmenusvendidos = $platosvendidos * $preciomenu;
 
 
@@ -165,7 +181,9 @@ class VentaController extends Controller
 
         }
 
-        return view('venta.diario')->with('items', $totalventashoy)->with('totalmenusvendidos', $totalmenusvendidos)->with('platosvendidos', $platosvendidos)->with('datos', $datos)->with('diaconfig', $diaconfig)->with('datosentrada', $datosentrada)->with('datosmenur', $datosmenur)->with('datosentradar', $datosentradar)->with('sumatotal', $sumatotal)->with('menuspreparados', $menuspreparados);
+
+
+        return view('venta.diario')->with('items', $totalventashoy)->with('ventas', $ventas)->with('totalmenusvendidos', $totalmenusvendidos)->with('platosvendidos', $platosvendidos)->with('datos', $datos)->with('diaconfig', $diaconfig)->with('datosentrada', $datosentrada)->with('datosmenur', $datosmenur)->with('datosentradar', $datosentradar)->with('sumatotal', $sumatotal)->with('menuspreparados', $menuspreparados);
 
 
     }
@@ -173,7 +191,150 @@ class VentaController extends Controller
 
 
 
+public function seleccionardia($dia){
+    $diaconfig = $dia;
 
+    $preciomenu = DB::table('configs')->latest('id')->first()->preciomenu;
+
+    $idconfiguno = DB::table('configs')->orderBy('id', 'asc')->first()->id;
+    $idconfigg =DB::table('configs')->whereDate('dia', '=',  $diaconfig)->first();
+    if(isset($idconfigg)){
+        $idconfigdia = $idconfigg->id;
+    }else{
+        $idconfigdia = $idconfiguno;
+    }
+
+
+
+
+
+    $totalventashoy = Orden::whereDate('created_at', '=', $diaconfig)
+        ->get();
+    $nroventas = count($totalventashoy);
+    $sumadeventas =Orden::whereDate('created_at', '=',  $diaconfig)->sum('total');
+
+    $ventas = $sumadeventas / $preciomenu;
+
+
+
+
+
+
+  //  $idconfigsdia=DB::table('configs')->whereDate('created_at', '=',  $diaconfig)->pluck('id');
+
+
+    $datosmenur= array();
+    $datosentradar= array();
+    $menurs = Config::find($idconfigdia)->menus;
+
+
+    foreach ($menurs as $menur) {
+        $menuid = $menur->menu_id;
+        $cantidadmenuini = $menur->porcionesini;
+        $cantidadmenures = $menur->porciones;
+        $plato = Menu::find($menuid);
+
+        $datosmenur [] = [
+            'idmenu' => $menuid,
+            'cantidadmenuini' => $cantidadmenuini,
+            'cantidadmenures' => $cantidadmenures,
+            'cantidadmenuven' => $cantidadmenuini - $cantidadmenures,
+            'plato' => $plato->nombre,
+            'costo' => $plato->costo,
+
+            'sumaxplato' => $cantidadmenuini * $plato->costo
+        ];
+
+    }
+
+    $menuspreparados = '0';
+    $sumatotal = '0';
+    if(isset($datosmenur)){
+        foreach ($datosmenur as $datomenu){
+
+            $sumatotal = $datomenu['sumaxplato'] + $sumatotal;
+            $menuspreparados = $datomenu['cantidadmenuini'] + $menuspreparados;
+
+        }}
+
+    $entradars = Config::find($idconfigdia)->entradas;
+    foreach ($entradars as $entradar) {
+        $entradaid = $entradar->entrada_id;
+        $cantidadini = $entradar->porcionesini;
+        $cantidadres = $entradar->porciones;
+        $plato = Entrada::find($entradaid);
+
+        $datosentradar [] = [
+            'idmenu' => $entradaid,
+            'cantidadini' => $cantidadini,
+            'cantidadres' => $cantidadres,
+            'cantidadven' => $cantidadini - $cantidadres,
+            'plato' => $plato->nombre,
+            'costo' => $plato->costo,
+
+            'sumaxplato' => $cantidadini * $plato->costo
+        ];
+    }
+
+
+
+
+
+
+
+    //fin egresos
+
+    $idordens = Orden::whereDate('created_at', '=',  $diaconfig)->pluck('id');
+
+
+    $datos = array(); // defined the $data here out of loop
+    $datosentrada = array();
+    $totalmenusvendidos = '0';
+    $platosvendidos = '0';
+
+
+    foreach ($idordens as $idorden) {
+
+        $menus = Orden::find($idorden)->menus;
+        $entradas = Orden::find($idorden)->entradas;
+
+        foreach ($menus as $menu) {
+            $menuid = $menu->pivot->menu_id;
+            $cantidad = $menu->pivot->cantidad;
+
+            $plato = Menu::find($menuid);
+
+            $datos [] = [
+                'cantidad' => $cantidad,
+                'plato' => $plato->nombre,
+            ];
+        }
+        if(isset($datos)){
+            foreach($datos as $dato){
+                $platosvendidos = $dato['cantidad'] + $platosvendidos;
+            }
+        }
+
+        $totalmenusvendidos = $platosvendidos * $preciomenu;
+
+
+        foreach ($entradas as $entrada) {
+            $entradaid = $entrada->pivot->entrada_id;
+            $cantidad = $entrada->pivot->cantidad;
+            $plato = Entrada::find($entradaid);
+
+            $datosentrada [] = [
+                'cantidad' => $cantidad,
+                'plato' => $plato->nombre,
+            ];
+
+        }
+
+    }
+
+    return view('venta.diario', compact('diaconfig', 'ventas', 'totalmenusvendidos', 'menuspreparados', 'sumatotal', 'datosmenur', 'datosentradar'));
+
+}
 
 
     public function mensual()
