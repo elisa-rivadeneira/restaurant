@@ -106,7 +106,7 @@
     <div class="row">
 
     </div>
-    <form action="/compra/guardar" method="post" class="grabado">
+    <form action="/compra/guardar" method="post" class="grabado" onsubmit="return valida(this)">
         @csrf
 
         <div class="card">
@@ -269,7 +269,35 @@
 
     <script>
 
+function valida(){
+    var ok = true;
+    var msg = "Debes escribir contenido en los campos:\n";
 
+    let dia_compra =  $("#dia_compra").val();
+    let mediodepago =  $("#mediodepago").val();
+    let proveedor =  $("#proveedor").val();
+
+    if( proveedor == ''){
+        msg += "- Proveedor\n";
+        ok = false;
+    }
+
+    if( mediodepago == ''){
+        msg += "- Medio de Pago\n";
+        ok = false;
+    }
+
+    if( dia_compra == ''){
+        msg += "- Dìa de Compra\n";
+        ok = false;
+    }
+
+    if(ok == false)
+        alert(msg);
+    return ok;
+
+
+        }
 
 
         function mostrarconsola() {
@@ -305,6 +333,8 @@
             let insumo_text = $("#insumo option:selected").text();
             let cantidad = $("#cantidad").val();
             let precio = $("#precio").val();
+
+console.log('el medio de pago es:', mediodepago);
             if (cantidad > 0 && precio > 0) {
                 $("#tblPlatos").append(`
                     <tr id="tr-${insumo_id}">
@@ -327,6 +357,7 @@
             } else {
                 alert("Se debe ingresar una cantidad o precio valido");
             }
+
         }
 
 

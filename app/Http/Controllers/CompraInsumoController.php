@@ -22,7 +22,6 @@ class CompraInsumoController extends Controller
 
         $input = $request->all();
 
-    //    dd($input);
         try {
             DB::beginTransaction();
             $compra = Compra::create([
@@ -40,8 +39,13 @@ class CompraInsumoController extends Controller
                     "costo" => $input["costos"][$key]
                 ]);
 
+
                 $ins = Insumo::find($value);
-                $ins->update(["cantidad"=> ($ins->cantidad + $input["cantidades"][$key]), "costo" => $input["costos"][$key]]);
+                $ins->cantidad =  $ins->cantidad + $input["cantidades"][$key];
+                $ins->save();
+
+
+              //  $ins->update(["cantidad"=> ($ins->cantidad + $input["cantidades"][$key]), "costo" => $input["costos"][$key]]);
 
 
 

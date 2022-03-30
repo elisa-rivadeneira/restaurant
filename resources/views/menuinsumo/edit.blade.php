@@ -140,11 +140,12 @@
         let insumo_text = $("#insumos option:selected").text();
         let cantidad = $("#cantidad").val();
         let costo = $("#costo").val();
+        let porciones = $("#porciones").val();
         var costoxitem=0;
         var sumando=0;
 
 //        let costoporcion = costoporciones / porciones;
-        if (cantidad > 0 && costo > 0) {
+        if (cantidad > 0 && costo > 0 && porciones >0) {
             $("#tblInsumos").append(`
                     <tr id="tr-${insumo_id}">
                         <td>
@@ -175,7 +176,7 @@
 
             console.log('calculocosto', parseFloat(calculocosto));
         } else {
-            alert("Se debe ingresar una cantidad o precio valido");
+            alert("Se debe ingresar las porciones y la cantidad de insumos");
         }
     }
     function eliminar_insumo(id, subtotal) {
