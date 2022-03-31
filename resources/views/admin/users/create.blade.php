@@ -43,7 +43,6 @@
     @csrf
         <div class="m-0 row justify-content-center">
             <div class="col-md-10">
-                <h1 class="text-center">DATOS DEL USUARIO</h1>
                 <div class="card">
                     <div class="row card-body">
                         <div class="form-group col-md-12">
@@ -98,7 +97,7 @@
                         </div>
 
                         <div class="col-md-4" style="margin-top: 3%;">
-                            <button type="submit" class="btn btn-success btn-block">Registrar</button>
+                            <button type="submit" class="btn btn-primary ">CREAR CUENTA</button>
                         </div>
 
                     </div>
