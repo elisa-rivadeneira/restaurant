@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('auth.login');
-});
+})->name('admin.dashboard');
 
 Route::get('redirects', 'App\Http\Controllers\HomeController@index');
 
@@ -80,7 +80,7 @@ Route::post('/menu/guardar', 'App\Http\Controllers\MenuController@save')->name('
 
 
 Route::resource('proveedores', 'App\Http\Controllers\ProveedorController');
-Route::get('/cocina', 'App\Http\Controllers\CocinaController@index');
+Route::get('/cocina', 'App\Http\Controllers\CocinaController@index')->name('cocina.index');
 
 Route::get('/cocina/{id}/status0', 'App\Http\Controllers\CocinaController@status0');
 Route::get('/cocina/{id}/status1', 'App\Http\Controllers\CocinaController@status1');

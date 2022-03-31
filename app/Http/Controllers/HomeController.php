@@ -16,8 +16,14 @@ class HomeController extends Controller
         if($role=='1')
         {
             return redirect()->route('admin.config');
-        }else{
+        }else if($role=='2')
+        {
             return redirect()->route('ordens.create');
+        }else if($role=='3')
+        {
+            return redirect()->route('cocina.index');
+        }else{
+            return redirect()->route('admin.dashboard');
         }
     }
 }
