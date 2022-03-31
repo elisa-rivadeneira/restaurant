@@ -388,11 +388,15 @@ return [
                             'url'  => 'semanal',
                         ],
                         */
-
                         [
-                            'text' => 'DIARIO',
+                            'text' => 'DÍA ACTUAL',
                             'url'  => 'diario',
                         ],
+                        [
+                            'text' => 'DÍAS ANTERIORES',
+                            'url'  => 'seleccionadia',
+                        ],
+
                     ],
                 ],
 

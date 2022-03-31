@@ -189,7 +189,10 @@ class VentaController extends Controller
     }
 
 
-
+public function seleccionadia(){
+    $diaconfig = DB::table('configs')->latest('id')->first()->dia;
+    return view('venta.seleccionardia', compact('diaconfig'));
+}
 
 public function seleccionardia($dia){
     $diaconfig = $dia;

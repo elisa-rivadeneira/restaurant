@@ -116,11 +116,11 @@
         <section class="content">
 
 
-
+              <h5 class="mb-2 mt-4">VENTAS DIARIAS</h5>
             <div class="row" >
                 <div class="col-12 m-3"  >
                  SELECCIONA EL DÍA: <input type="date" name="dia" id="dia" value="{{$diaconfig}}" onchange="establecereldia(this.value)">
-                    <a id="buttomday" href="/seleccionardia/{{$diaconfig}}" class="btn btn-warning" id="changeStatus" data-id="{{$diaconfig}}">  CREAR REPORTE</a>
+                    <a id="buttomday" href="/seleccionardia/{{$diaconfig}}" class="btn btn-warning" id="changeStatus" data-id={{$diaconfig}}">  CREAR REPORTE</a>
 
                 </div>
             </div>
