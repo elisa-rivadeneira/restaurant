@@ -49,9 +49,11 @@ class VentaController extends Controller
     public function diario()
     {
 
+
         $diaconfig = DB::table('configs')->latest('id')->first()->dia;
         $preciomenu = DB::table('configs')->latest('id')->first()->preciomenu;
-
+        Carbon::setLocale('es');
+        $fecha = Carbon::parse($diaconfig)->toFormattedDateString();
 
         $totalventashoy = Orden::whereDate('created_at', '=', $diaconfig)
             ->get();
@@ -183,7 +185,7 @@ class VentaController extends Controller
 
 
 
-        return view('venta.diario')->with('items', $totalventashoy)->with('ventas', $ventas)->with('totalmenusvendidos', $totalmenusvendidos)->with('platosvendidos', $platosvendidos)->with('datos', $datos)->with('diaconfig', $diaconfig)->with('datosentrada', $datosentrada)->with('datosmenur', $datosmenur)->with('datosentradar', $datosentradar)->with('sumatotal', $sumatotal)->with('menuspreparados', $menuspreparados);
+        return view('venta.diario')->with('fecha', $fecha)->with('items', $totalventashoy)->with('ventas', $ventas)->with('totalmenusvendidos', $totalmenusvendidos)->with('platosvendidos', $platosvendidos)->with('datos', $datos)->with('diaconfig', $diaconfig)->with('datosentrada', $datosentrada)->with('datosmenur', $datosmenur)->with('datosentradar', $datosentradar)->with('sumatotal', $sumatotal)->with('menuspreparados', $menuspreparados);
 
 
     }
@@ -194,8 +196,10 @@ public function seleccionadia(){
     return view('venta.seleccionardia', compact('diaconfig'));
 }
 
-public function seleccionardia($dia){
+public function day($dia){
     $diaconfig = $dia;
+    Carbon::setLocale('es');
+    $fecha = Carbon::parse($diaconfig)->toFormattedDateString();
 
     $preciomenu = DB::table('configs')->latest('id')->first()->preciomenu;
 
@@ -335,7 +339,7 @@ public function seleccionardia($dia){
 
     }
 
-    return view('venta.diario', compact('diaconfig', 'ventas', 'totalmenusvendidos', 'menuspreparados', 'sumatotal', 'datosmenur', 'datosentradar'));
+    return view('venta.diario', compact('fecha','diaconfig', 'ventas', 'totalmenusvendidos', 'menuspreparados', 'sumatotal', 'datosmenur', 'datosentradar'));
 
 }
 

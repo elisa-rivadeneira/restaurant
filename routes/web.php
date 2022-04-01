@@ -122,6 +122,6 @@ Route::get('/getPrecio/{id}', 'App\Http\Controllers\OrdenPlatoController@getPrec
 
 Route::get('/prueba', 'App\Http\Controllers\PruebaController@prueba');
 
-Route::get('/seleccionardia/{dia}', 'App\Http\Controllers\VentaController@seleccionardia');
+Route::get('/dia/{dia}', 'App\Http\Controllers\VentaController@day');
 Route::get('/seleccionadia', 'App\Http\Controllers\VentaController@seleccionadia');
 

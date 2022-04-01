@@ -127,7 +127,7 @@
                     <input class="form-control" type="date" name="dia" id="dia" value="{{$diaconfig}}" onchange="establecereldia(this.value)">
                 </div>
                     <div class="col-12 mt-3 mb-5"  >
-                    <a id="buttomday" href="/seleccionardia/{{$diaconfig}}" class="btn btn-primary" id="changeStatus" data-id="{{$diaconfig}}">  VER REPORTE</a>
+                    <a id="buttomday" href="/dia/{{$diaconfig}}" class="btn btn-primary" id="changeStatus" data-id="{{$diaconfig}}">  VER REPORTE</a>
 
                 </div>
             </div>

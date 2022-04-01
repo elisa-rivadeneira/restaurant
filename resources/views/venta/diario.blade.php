@@ -4,6 +4,7 @@
 @section('title', 'Reporte Diario de Ventas')
 
 @section('css')
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
@@ -99,7 +100,6 @@
 
 
 @section('content_header')
-    <h1>REPORTE DIARIO</h1>
 @stop
 
 @section("content")
@@ -113,174 +113,135 @@
     <div class="contentss" >
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content p-3">
 
-
-
-            <div class="row" >
-                <div class="col-12 m-3"  >
-                 SELECCIONA EL DÍA: <input type="date" name="dia" id="dia" value="{{$diaconfig}}" onchange="establecereldia(this.value)">
-                    <a id="buttomday" href="/seleccionardia/{{$diaconfig}}" class="btn btn-warning" id="changeStatus" data-id="{{$diaconfig}}">  CREAR REPORTE</a>
-
-                </div>
-            </div>
-            <div class="row bg-info p-3 col-md-12" >
-                <div class="col-md-4">DIA SELECCIONADO: </div>
+            <div class="row bg-pink p-3 col-md-12 rounded" >
+                <div class="col-md-4 ">Reporte del Día:<b> {{$fecha}} </b></div>
                 <div class="col-md-2" id="diaseleccionado"> </div>
             </div>
 
             <div class="row" >
-
-
-            <h5 class="mb-2 mt-4">VENTAS DE HOY</h5>
+            <h5 class="mb-2 mt-4 ">VENTAS DE HOY</h5>
             </div>
-            <div class="row col-md-12" >
-                <div class=" row col-md-12">
-                    <div class="col-md-5 ">
 
-                        <div class="small-box bg-info">
+                <div class="row col-md-12">
+                    <div class="col-6 ">
+
+                        <div class="small-box bg-rose">
                             <div class="inner" id="nroventas">
-                                <h3>{{$ventas}}</h3>
-                                <p>Menus Vendidos</p>
+                                <h5>{{$ventas}}</h5>
+                                <p class="text-center">Menus Vendidos</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-shopping-cart"></i>
                             </div>
                             <a href="#" class="small-box-footer">
-                                Mas info <i class="fas fa-arrow-circle-right"></i>
+
                             </a>
                         </div>
                     </div>
 
-                    <div class="col-md-7">
+                    <div class="col-6">
 
                         <div class="small-box bg-warning" id="ventadia">
                             <div class="inner">
-                                <h3>S/.{{$totalmenusvendidos}}</h3>
-                                <p>Ventas Totales</p>
+                                <h5>S/.{{$totalmenusvendidos}}</h5>
+                                <p class="text-center">Ventas Totales</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-user-plus"></i>
+                                <i class="fas fa-shopping-cart"></i>
+
                             </div>
                             <a href="#" class="small-box-footer">
-                                More info <i class="fas fa-arrow-circle-right"></i>
+
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-12"> EGRESOS DE HOY <BR></div>
-                    <div class="row col-md-12" >
-                        <div class="col-md-5 ">
+                </div>
 
-                            <div class="small-box bg-info">
-                                <div class="inner" id="nroventas">
-                                    <h3>{{$menuspreparados}}</h3>
-                                    <p>Menus preparados</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-shopping-cart"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">
-                                    Mas info <i class="fas fa-arrow-circle-right"></i>
-                                </a>
+                        <div class="card">
+                            <div class="card-header bg-gray">EGRESOS DE HOY</div>
+
+                            <div class="card-body">
+                            <table width="100%">
+                                <thead>  <tr>
+                                    <td scope="col" class="small"><h6>Menus preparados</h6></td>
+                                    <td scope="col" class="small"><h6>Costos Totales</h6></td>
+                                </tr></thead>
+
+                                <tr>
+                                    <td>{{$menuspreparados}}</td>
+                                    <td>S/.{{$sumatotal}}</td>
+                                </tr>
+                            </table>
                             </div>
+
+
+
                         </div>
 
-                        <div class="col-md-7">
 
-                            <div class="small-box bg-warning" id="ventadia">
-                                <div class="inner">
-                                    <h3>S/.{{$sumatotal}}</h3>
-                                    <p>Costos Totales</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-user-plus"></i>
-                                </div>
-                                <a href="#" class="small-box-footer">
-                                    More info <i class="fas fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="col-md-12">
-                        <div class="col-md-12">MENUS PREPARADOS </div>
 
 
                         <div class="card card-success">
-                            <div class="card-header">
-                                <h3 class="card-title">RESUMEN MENUS</h3>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                                    </button>
-                                </div>
+                            <div class="card-header bg-rose">
+                             MENUS PREPARADOS
+
 
                             </div>
+                        </div>
 
-                            <div class="card-body" id="platosvendidos">
-
-
-                                <div class="row bg-primary">
-                                    <div class="col-md-3 "> PREPARADOS</div>
-                                    <div class="col-md-2 "> VENDIDOS</div>
-                                    <div class="col-md-7">PLATOS DE FONDO</div>
-                                </div>
-                                <div class="row">
+                                <table class="display responsive nowrap table table-striped mt-4 shadow-lg " >
+                                    <thead class="bg-primary text-white">
+                                    <tr>
+                                        <td>Prep.</td>
+                                        <td>Vend.</td>
+                                        <td>Plato de Fondo</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
 
                                     @foreach ($datosmenur as $dato)
-                                        <div class="col-md-3"> {{$dato['cantidadmenuini']}}</div>
-                                        <div class="col-md-2"> {{$dato['cantidadmenuven']}}</div>
-                                        <div class="col-md-7">{{$dato['plato']}}</div>
+                                    <tr>
+                                        <td>{{$dato['cantidadmenuini']}}</td>
+                                        <td>{{$dato['cantidadmenuven']}}</td>
+                                        <td>{{$dato['plato']}}</td>
+                                    </tr>
+                                                 @endforeach
+                                    </tbody>
+                                </table>
 
 
 
+                        <table class="display responsive nowrap table table-striped mt-4 shadow-lg " >
+                            <thead class="bg-primary text-white">
+                            <tr>
+                                <td>Prep.</td>
+                                <td>Vend.</td>
+                                <td>Entradas</td>
+                            </tr>
+                            </thead>
+                            <tbody>
 
-                                    @endforeach
-                                </div>
-
-
-                            </div>
-
-
-
-                        </div>
-
-                        <div class="card card-success">
-                            <div class="card-header">
-                                <h3 class="card-title">RESUMEN ENTRADAS</h3>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                                    </button>
-                                </div>
-
-                            </div>
-
-                            <div class="card-body" id="platosvendidos">
-
-
-                                <div class="row bg-primary">
-                                    <div class="col-md-3 "> PREPARADOS</div>
-                                    <div class="col-md-2 "> VENDIDOS</div>
-                                    <div class="col-md-7">ENTRADAS</div>
-                                </div>
-                                <div class="row">
-
-                                    @foreach ($datosentradar as $dato)
-                                        <div class="col-md-3"> {{$dato['cantidadini']}}</div>
-                                        <div class="col-md-2"> {{$dato['cantidadven']}}</div>
-                                        <div class="col-md-7">{{$dato['plato']}}</div>
-
-
-
-
-                                    @endforeach
-                                </div>
-
+                            @foreach ($datosentradar as $dato)
+                                <tr>
+                                    <td>{{$dato['cantidadini']}}</td>
+                                    <td>{{$dato['cantidadven']}}</td>
+                                    <td>{{$dato['plato']}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        
 
                             </div>
 
 
 
                         </div>
+
 
 
 

@@ -2,3 +2,24 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+
+
+
+.bg-pink {
+    color: white !important;
+    background-color: #d45eee !important;
+
+}
+
+
+.bg-rose {
+    color: white !important;
+    background-color: #ea1fa8 !important;
+
+}
+
+.small-box .icon>i.fa, .small-box .icon>i.fab, .small-box .icon>i.fad, .small-box .icon>i.fal, .small-box .icon>i.far, .small-box .icon>i.fas, .small-box .icon>i.ion {
+    font-size: 30px;
+    top: 20px;
+}
+
