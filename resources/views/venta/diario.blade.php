@@ -105,27 +105,27 @@
 @section("content")
 
 
-<div class="wrapper ml-4" >
+<div class="wrapper " >
 
 
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="contentss" >
+    <div class="container" >
 
         <!-- Main content -->
         <section class="content p-3">
 
-            <div class="row bg-pink p-3 col-md-12 rounded" >
-                <div class="col-md-4 ">Reporte del Día:<b> {{$fecha}} </b></div>
-                <div class="col-md-2" id="diaseleccionado"> </div>
+            <div class="row bg-pink p-2 col-md-12 rounded justify-content-center" >
+                <div class="col-md-4 col-auto  ">Reporte del Día:<b> {{$fecha}} </b></div>
+                <div class="col-md-2 col-auto " id="diaseleccionado"> </div>
             </div>
 
-            <div class="row" >
-            <h5 class="mb-2 mt-4 ">VENTAS DE HOY</h5>
-            </div>
 
-                <div class="row col-md-12">
-                    <div class="col-6 ">
+
+                <div class="container">
+                    <h5 class="mb-2 mt-3 text-center text-secondary "><b>VENTAS DE HOY</b></h5>
+                <div class="row  p-1 mt-2 mb-2 justify-content-center" >
+                    <div class="col col-6">
 
                         <div class="small-box bg-rose">
                             <div class="inner" id="nroventas">
@@ -141,7 +141,7 @@
                         </div>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col col-6" >
 
                         <div class="small-box bg-warning" id="ventadia">
                             <div class="inner">
@@ -158,8 +158,11 @@
                         </div>
                     </div>
                 </div>
+                </div>
 
-                        <div class="card">
+
+
+                    <div class="card">
                             <div class="card-header bg-gray">EGRESOS DE HOY</div>
 
                             <div class="card-body">
@@ -182,16 +185,14 @@
 
 
 
-                    <div class="col-md-12">
+                    <div class="col-md-12 bg-clarito p-2 text-center" >
 
 
-                        <div class="card card-success">
-                            <div class="card-header bg-rose">
-                             MENUS PREPARADOS
 
 
-                            </div>
-                        </div>
+                            <h6><b>MENUS PREPARADOS</b></h6>
+
+
 
                                 <table class="display responsive nowrap table table-striped mt-4 shadow-lg " >
                                     <thead class="bg-primary text-white">
@@ -234,7 +235,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        
+
 
                             </div>
 

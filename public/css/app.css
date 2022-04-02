@@ -1995,14 +1995,36 @@ select {
 .ease-in {
 	transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
+.content-wrapper {
+    background-color: #ffffff !important;
+
+}
+body{
+    background-color: white  !important;
+}
 .bg-pink {
     color: white !important;
-    background-color: #d45eee !important;
+    background-color: #f55fbb !important;
 
 }
 .bg-rose {
     color: white !important;
     background-color: #ea1fa8 !important;
+
+}
+.bg-sky {
+    color: white !important;
+    background-color: #317ece !important;
+
+}
+.bg-clarito {
+    color: #6C97BB !important;
+    background-color: #F3F7F8 !important;
+
+}
+.rosita {
+    color: #d969c8 !important;
+
 
 }
 .small-box .icon>i.fa, .small-box .icon>i.fab, .small-box .icon>i.fad, .small-box .icon>i.fal, .small-box .icon>i.far, .small-box .icon>i.fas, .small-box .icon>i.ion {
@@ -2425,4 +2447,5 @@ select {
 		padding-right: 2rem;
 	}
 }
+
 
