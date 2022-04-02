@@ -122,7 +122,7 @@
 
 
                 <div class="container">
-                    <h5 class="mb-2 mt-3 text-center text-secondary "><b>VENTAS DE HOY</b></h5>
+                    <h5 class="mb-2 mt-3 text-center text-secondary "><b>VENTAS DEL DÍA</b></h5>
                 <div class="row  p-1 mt-2 mb-2 justify-content-center" >
                     <div class="col col-6">
 

@@ -12,7 +12,7 @@ body{
 
 .bg-pink {
     color: white !important;
-    background-color: #f55fbb !important;
+    background-color: #ff73c9 !important;
 
 }
 
@@ -33,6 +33,14 @@ body{
     background-color: #F3F7F8 !important;
 
 }
+
+.bg-plomito {
+    color: #064a93 !important;
+    background-color: #d5d5d5 !important;
+
+}
+
+
 
 .rosita {
     color: #d969c8 !important;

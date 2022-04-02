@@ -2004,7 +2004,7 @@ body{
 }
 .bg-pink {
     color: white !important;
-    background-color: #f55fbb !important;
+    background-color: #ff73c9 !important;
 
 }
 .bg-rose {
@@ -2020,6 +2020,11 @@ body{
 .bg-clarito {
     color: #6C97BB !important;
     background-color: #F3F7F8 !important;
+
+}
+.bg-plomito {
+    color: #064a93 !important;
+    background-color: #d5d5d5 !important;
 
 }
 .rosita {

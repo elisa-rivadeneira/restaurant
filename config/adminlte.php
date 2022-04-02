@@ -253,15 +253,23 @@ return [
 
         [
             'text'    => 'ADMINISTRACION',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fas fa-solid fa-circle-plus',
             'submenu' => [
 
                 [
-            'text'        => 'Configurar Día',
+            'text'        => 'Menús del Día',
             'url'         => '/config',
             'icon'        => 'far fa-fw fa-kiss-beam',
             'label_color' => 'success',
         ],
+                [
+                    'text'        => 'Nuevo Día',
+                    'url'         => '/config/create',
+                    'icon'        => 'far fa-fw fa-plus-circle',
+                    'label_color' => 'success',
+                ],
+
+
                 [
                     'text'        => 'Compras',
                     'url'         => '/compras',

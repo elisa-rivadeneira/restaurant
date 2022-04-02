@@ -19,9 +19,13 @@ class ConfigController extends Controller
 
     public function index(Request $request){
 
+        Carbon::setLocale('es');
+
+
     $categorias = Categoria::all();
     $last_config_id = DB::table('configs')->latest('id')->first()->id;
-
+        $diaconfig =$last_config_id = DB::table('configs')->latest('id')->first()->dia;
+        $fecha = Carbon::parse($diaconfig)->toFormattedDateString();
         $platos = Plato::all();
     $menus = Menu::all();
     $entradas = Entrada::all();
@@ -52,7 +56,7 @@ class ConfigController extends Controller
                 ->get();
         }
 
-    return view('config.index', compact( 'last_config_id','configultimo','platos', 'menus', 'entradas', 'categorias', 'configmenus', 'preciomenu', 'configentradas'));
+    return view('config.index', compact( 'fecha', 'last_config_id','configultimo','platos', 'menus', 'entradas', 'categorias', 'configmenus', 'preciomenu', 'configentradas'));
 
     }
 
