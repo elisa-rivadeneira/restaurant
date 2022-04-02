@@ -16,17 +16,17 @@
 
             <div class="card ">
                 <div class="card-header bg-warning">
-                   CONFIGURACIÓN DEL DÍA
+                  <b> CONFIGURACIÓN DEL DÍA</b>
                     <div class="card-tools  ">
-                        <button class="btn">
+                        <button class="btn small">
                             @can('admin.config.create')
-                                <a href="/config/edit/{{$last_config_id}}" class=" btn btn-primary " >EDITAR DÍA</a>
+                                <a href="/config/edit/{{$last_config_id}}" class=" btn btn-primary small" >EDITAR DÍA</a>
                             @endcan
                         </button>
                     </div>
                 </div>
 
-                <div class="card-body  p-2"> Menús del Día:<b> {{$fecha}} </b> || Precio del Menú: S/.  {{number_format($preciomenu, 2)}}</div>
+                <div class="card-body small p-2"> Menús del Día:<b> {{$fecha}} </b> || Precio del Menú: S/.  {{number_format($preciomenu, 2)}}</div>
             </div>
 
 
