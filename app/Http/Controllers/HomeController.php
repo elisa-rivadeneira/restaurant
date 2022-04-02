@@ -15,7 +15,7 @@ class HomeController extends Controller
 
         if($role=='1')
         {
-            return redirect()->route('admin.config');
+            return redirect()->route('reportediario');
         }else if($role=='2')
         {
             return redirect()->route('ordens.create');

@@ -63,7 +63,7 @@ Route::get('/reporte', 'App\Http\Controllers\VentaController@reporte');
 Route::get('/anual', 'App\Http\Controllers\VentaController@anual');
 Route::get('/mensual', 'App\Http\Controllers\VentaController@mensual');
 Route::get('/semanal', 'App\Http\Controllers\VentaController@semanal');
-Route::get('/diario', 'App\Http\Controllers\VentaController@diario');
+Route::get('/diario', 'App\Http\Controllers\VentaController@diario')->name('reportediario');
 Route::get('/ventas/{id}', 'App\Http\Controllers\VentaController@dia');
 Route::get('/ventasplatos/{id}', 'App\Http\Controllers\VentaController@ventasplatos');
 Route::get('/ventasplatosmes/{id}', 'App\Http\Controllers\VentaController@ventasplatosmes');

@@ -116,8 +116,7 @@
         <section class="content p-3">
 
             <div class="row bg-pink p-2 col-md-12 rounded justify-content-center" >
-                <div class="col-md-4 col-auto  ">Reporte del Día:<b> {{$fecha}} </b></div>
-                <div class="col-md-2 col-auto " id="diaseleccionado"> </div>
+                <div class="col-md-4 col-auto text-center ">Reporte del Día:<b> {{$fecha}} </b></div>
             </div>
 
 
@@ -129,7 +128,7 @@
 
                         <div class="small-box bg-rose">
                             <div class="inner" id="nroventas">
-                                <h5>{{$ventas}}</h5>
+                                <h5 class="text-center" ><b>{{$ventas}}</b></h5>
                                 <p class="text-center">Menus Vendidos</p>
                             </div>
                             <div class="icon">
@@ -145,7 +144,7 @@
 
                         <div class="small-box bg-warning" id="ventadia">
                             <div class="inner">
-                                <h5>S/.{{$totalmenusvendidos}}</h5>
+                                <h5 class="text-center" ><b>S/.{{$totalmenusvendidos}}</b></h5>
                                 <p class="text-center">Ventas Totales</p>
                             </div>
                             <div class="icon">

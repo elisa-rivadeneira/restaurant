@@ -228,7 +228,7 @@
 
 function establecereldia(dia){
     $("#diaseleccionado").html(dia);
-    $("#buttomday").attr("href", "/seleccionardia/"+dia);
+    $("#buttomday").attr("href", "/dia/"+dia);
 
     }
 </script>
