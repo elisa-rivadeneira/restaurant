@@ -2031,6 +2031,9 @@ body{
     font-size: 30px;
     top: 20px;
 }
+.letrita{
+    font-size: 0.8em;
+}
 .hover\:border-gray-300:hover {
 	--tw-border-opacity: 1;
 	border-color: rgba(209, 213, 219, var(--tw-border-opacity));
@@ -2447,5 +2450,4 @@ body{
 		padding-right: 2rem;
 	}
 }
-
 

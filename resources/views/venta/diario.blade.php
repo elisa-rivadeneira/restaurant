@@ -194,7 +194,7 @@
 
 
 
-                                <table class="display responsive nowrap table table-striped mt-4 shadow-lg " >
+                                <table class="letrita display responsive nowrap table table-striped mt-4 shadow-lg " >
                                     <thead class="bg-primary text-white">
                                     <tr>
                                         <td>Prep.</td>
@@ -216,7 +216,7 @@
 
 
 
-                        <table class="display responsive nowrap table table-striped mt-4 shadow-lg " >
+                        <table class="letrita display responsive nowrap table table-striped mt-4 shadow-lg " >
                             <thead class="bg-primary text-white">
                             <tr>
                                 <td>Prep.</td>
