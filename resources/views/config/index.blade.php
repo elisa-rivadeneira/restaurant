@@ -5,16 +5,13 @@
 @section('css')
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+
+
 @endsection
 
 @section('content_header')
-
-
-
-        <section class="content p-3">
-
-
-            <div class="card ">
+    <section class="content p-3">
+       <div class="card ">
                 <div class="card-header bg-warning">
                   <b> CONFIGURACIÓN DEL DÍA</b>
                     <div class="card-tools  ">
@@ -43,7 +40,7 @@
 
                     <!-- /.card -->
                 <div class="col-md-6">
-                    <div class="card ">
+                    <div class="card ml-2">
                         <div class="card-header bg-pink">
                             <h3 class="card-title">MENÚS</h3>
 
@@ -54,10 +51,7 @@
                             </div>
                         </div>
                         <div class="card-body p-0">
-
-
-
-                            <table id="tblMenus" class="table display responsive nowrap table table-striped mt-4 shadow-lg">
+                          <table id="tblMenus" class="table display responsive nowrap table table-striped mt-4 shadow-lg">
                                 <thead>
                                 <tr>
                                     <th>Nombre</th>
@@ -78,20 +72,17 @@
                                     </tr>
                                     @endforeach
                                 @endif
-
-
-                                </tbody>
+                            </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
                     </div>
                 </div>
                     <!-- /.card -->
-<div class="col-md-6">
-                    <div class="card">
+                <div class="col-md-6">
+                    <div class="card mr-2">
                         <div class="card-header bg-rose">
                             <h3 class="card-title text-white">ENTRADAS</h3>
-
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -99,10 +90,7 @@
                             </div>
                         </div>
                         <div class="card-body p-0">
-
-
-
-                            <table id="tblEntradas" class="table display responsive nowrap table table-striped mt-4 shadow-lg">
+                         <table id="tblEntradas" class="table display responsive nowrap table table-striped mt-4 shadow-lg">
                                 <thead>
                                 <tr>
                                     <th>Nombre</th>
@@ -127,8 +115,8 @@
                         </div>
                         <!-- /.card-body -->
                     </div>
-</div>
-                </div>
+            </div>
+        </div>
 
 
 
@@ -197,6 +185,8 @@
     </script>
 
     <script src="{{ asset('../js/functionsconfig.js')}}"></script>
+
+
 
 
 @stop

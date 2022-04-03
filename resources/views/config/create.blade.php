@@ -3,25 +3,28 @@
 
 @section('title', 'Configuración del Día')
 
+@section('css')
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+        .select2-selection {
+            height: calc(2.25rem + 2px) !important;
+        }
+    </style>
+
+@endsection
+
+
 @section('content_header')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Configurar Nuevo Día</h1>
+    <section class="content">
+        <div class="row bg-softpurple p-2 justify-content-center" >
+            <div class="col-md-4 col-auto text-center "><b>CONFIGURAR NUEVO DÍA</b></div>
+        </div>
 
 
-
-
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                        <li class="breadcrumb-item active">Configuración del Día</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
     </section>
 
 @stop
@@ -42,16 +45,8 @@
             <div class="row">
                 <div class="col-md-12">
 
-                    <div class="card card-secondary">
-                        <div class="card-header">
-                            <h3 class="card-title">DATOS DE CONFIGURACIÒN</h3>
+                    <div class="card card-primary">
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
                         <div class="card-body row">
 
                             <div class="col-md-6">
@@ -86,8 +81,8 @@
                 <div class="col-md-6">
 
                         <!-- /.card -->
-                        <div class="card card-info">
-                            <div class="card-header">
+                        <div class="card ">
+                            <div class="card-header bg-pink">
                                 <h3 class="card-title">PLATOS DE FONDO</h3>
 
                                 <div class="card-tools">
@@ -98,87 +93,77 @@
                             </div>
                             <div class="card-body p-0">
                                 <div class="col-md-12" >
-                                    <div class="input-group col-md-12">
-                                        <div class="form-group col-md-12 mb-2">
-                                            <div class="input-group">
-                                                <div class="col-md-6">
-                                                <label for="">SELECCIONE EL MENU</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="">INDICAR PORCIONES</label>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <select name="menu" id="menu" class="form-control form-select" onchange="colocar_precio()" >
-                                                        <option selected="false" >Menú</option>
-                                                        @foreach($menus as $menu)
-                                                            <option value="{{ $menu->id }}">{{ $menu->nombre }}</option>
-                                                        @endforeach
-                                                    </select>
-
-                                                </div>
-
-                                                <div class="col-md-6">
-
-
-                                                <input class="form-control" id="porciones" name="porciones" value="" />
-
-                                                </div>
-
-
-
-                                            </div>
-
+                                        <div class="col-md-12 mb-2">
+                                             <label for="">SELECCIONE EL PLATO DE FONDO</label>
                                         </div>
+                                                    <div class="col-md-12">
+                                                        <select name="menu" id="menu" class="form-control form-select" onchange="colocar_precio()" >
+                                                            <option selected="false" >Plato de Fondo</option>
+                                                            @foreach($menus as $menu)
+                                                                <option value="{{ $menu->id }}">{{ $menu->nombre }}</option>
+                                                            @endforeach
+                                                        </select>
+
+                                                    </div>
+
+
+                                        <div class="input-group col-md-12">
+                                            <div class="col-md-12 mb-2">
+                                                    <label for="">INDICAR PORCIONES</label>
+                                            </div>
+                                            <div class="col-md-12 mb-2">
+                                                <input class="form-control" id="porciones" name="porciones" value="" />
+                                            </div>
+                                        </div>
+                                </div>
+
+                            </div>
                                                 <div class="col-md-12">
                                                     <div class="btn-group w-100 pl-5 pr-5">
-                                                  <span class="btn btn-success col fileinput-button" onclick="agregar_menu()">
+                                                  <span class="btn btn-primary mb-2" onclick="agregar_menu()">
                                                     <i class="fas fa-plus"></i>
                                                     <span>Añadir Menú</span>
                                                   </span>
                                                     </div>
                                                 </div>
 
+                                    <div class="card m-3">
+                                    <table id="tblMenus" class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Porciones</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
 
+                                        @if(isset($configmenus))
+
+                                            @foreach($configmenus as $menu)
+                                                <tr id="tr-{{$menu->id}}">
+
+                                                    <td>  {{$menu->nombre}}</td>
+                                                    <td >{{$menu->porciones}}</td>
+                                                    <td class="text-right py-0 align-middle">
+                                                        <a href="#" class="btn btn-info" onclick="eliminar_plato(${menu_id})"><i class="fas fa-eye"></i></a>
+                                                        <a href="#" class="btn btn-danger" onclick="eliminar_plato(${menu_id})" ><i class="fas fa-trash"></i></a>
+
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+
+
+                                        </tbody>
+                                    </table>
                                     </div>
                                 </div>
 
 
 
-                                <table id="tblMenus" class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>Nombre</th>
-                                        <th>Porciones</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    @if(isset($configmenus))
-
-                                        @foreach($configmenus as $menu)
-                                        <tr id="tr-{{$menu->id}}">
-
-                                            <td>  {{$menu->nombre}}</td>
-                                            <td >{{$menu->porciones}}</td>
-                                            <td class="text-right py-0 align-middle">
-                                                <a href="#" class="btn btn-info" onclick="eliminar_plato(${menu_id})"><i class="fas fa-eye"></i></a>
-                                                <a href="#" class="btn btn-danger" onclick="eliminar_plato(${menu_id})" ><i class="fas fa-trash"></i></a>
-
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    @endif
-
-
-                                    </tbody>
-                                </table>
                             </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-                </div>
+
                 <div class="col-md-6">
                         <div class="card card-warning">
                             <div class="card-header">
@@ -192,41 +177,36 @@
                             </div>
                             <div class="card-body p-0">
                                 <div class="col-md-12" >
-                                    <div class="input-group col-md-12">
-                                        <div class="form-group col-md-12 mb-2">
-                                            <div class="input-group">
-                                                <div class="col-md-6">
+                                        <div class="col-md-12 mb-2">
                                                     <label for="">SELECCIONE LA ENTRADA</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="">INDICAR PORCIONES</label>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <select name="entrada" id="entrada" class="form-control form-select" >
-                                                        <option selected="false" >Entrada</option>
-                                                        @foreach($entradas as $entrada)
-                                                            <option value="{{ $entrada->id }}">{{ $entrada->nombre }}</option>
-                                                        @endforeach
-                                                    </select>
-
-                                                </div>
-
-                                                <div class="col-md-6">
-
-
-                                                    <input class="form-control" id="porcionesentrada" name="porcionesentrada" value="" />
-
-                                                </div>
-
-
-
-                                            </div>
-
                                         </div>
                                         <div class="col-md-12">
+                                            <select name="entrada" id="entrada" class="form-control form-select" >
+                                                <option selected="false" >Entrada</option>
+                                                @foreach($entradas as $entrada)
+                                                    <option value="{{ $entrada->id }}">{{ $entrada->nombre }}</option>
+                                                @endforeach
+                                            </select>
+
+                                        </div>
+
+
+
+                                    <div class="input-group col-md-12">
+                                        <div class="col-md-12 mb-2">
+                                                    <label for="">INDICAR PORCIONES</label>
+                                        </div>
+
+                                    <div class="col-md-12 mb-2">
+                                        <input class="form-control" id="porcionesentrada" name="porcionesentrada" value="" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                                        <div class="col-md-12">
                                             <div class="btn-group w-100 pl-5 pr-5">
-                                                  <span class="btn btn-success col fileinput-button" onclick="agregar_entrada()">
+                                                  <span class="btn btn-primary  mb-2 " onclick="agregar_entrada()">
                                                     <i class="fas fa-plus"></i>
                                                     <span>Añadir Entrada</span>
                                                   </span>
@@ -234,11 +214,9 @@
                                         </div>
 
 
-                                    </div>
-                                </div>
 
 
-
+                            <div class="card m-3">
                                 <table id="tblEntradas" class="table">
                                     <thead>
                                     <tr>
@@ -259,7 +237,7 @@
                         </div>
                 </div>
             </div>
-           
+
             <div class="row">
                 <div class="col-12">
                     <a href="#" class="btn btn-secondary">Cancelar</a>
@@ -380,6 +358,15 @@
     </script>
     <script src="{{ asset('../js/functionsconfig.js')}}"></script>
 
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('select').select2();
+        });
+    </script>
 @stop
 
 

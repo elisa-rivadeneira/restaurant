@@ -265,7 +265,7 @@ return [
                 [
                     'text'        => 'Nuevo Día',
                     'url'         => '/config/create',
-                    'icon'        => 'far fa-fw fa-plus-circle',
+                    'icon'        => 'fas fa-plus',
                     'label_color' => 'success',
                 ],
 

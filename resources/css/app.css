@@ -23,6 +23,13 @@ body{
 
 }
 
+.bg-softpurple{
+    color: white !important;
+    background-color: #e066ec !important;
+
+}
+
+
 .bg-sky {
     color: white !important;
     background-color: #317ece !important;
