@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-                <div class="card-body small p-2"> Menús del Día:<b> {{$fecha}} </b> || Precio del Menú: S/.  {{number_format($preciomenu, 2)}}</div>
+                <div class="card-body small p-2"> Menús del Día:<b> {{$fecha}} </b> <div class="col-xs-12">Precio del Menú: S/.  {{number_format($preciomenu, 2)}}</div>
             </div>
 
 

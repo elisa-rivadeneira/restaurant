@@ -8,8 +8,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Configuración del Día</h1>
-                    <a href="/config/create" class="btn btn-primary mb-4" >CONFIGURAR NUEVO DÍA</a>
+                    <h1>Configurar Nuevo Día</h1>
+
 
 
 
@@ -38,10 +38,13 @@
 
         <!-- Main content -->
         <section class="content">
-        <!--    <div class="col-md-6">
-                    <div class="card card-primary">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="card card-secondary">
                         <div class="card-header">
-                            <h3 class="card-title">Platos a la Carta</h3>
+                            <h3 class="card-title">DATOS DE CONFIGURACIÒN</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -49,306 +52,214 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="card-body row">
 
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="preciomenu">Ingrese Plato a la Carta</label>
-                                <div class="input-group">
-
-                                        <div class="col-md-12 row">
-                                            <div class="col-md-6">
-                                                <label for="">CATEGORIA</label>
-                                                <select name="categoria" id="categoria" class="form-control form-select"s >
-                                                    <option selected="false" value="">Categoria</option>
-                                                    @foreach($categorias as $categoria)
-            <option value="{{ $categoria->id}}">{{ $categoria->nombre }}
-                </option>
-@endforeach
-            </select>
-
-        </div>
-
-        <div class="col-md-6">
-
-            <label for="">PLATO</label>
-            <select name="plato" id="plato" class="form-control form-select" onchange="colocar_precio()" >
-                <option selected="false" >Plato</option>
-@foreach($platos as $plato)
-            <option value="{{ $plato->id }}">{{ $plato->nombre }}</option>
-                                                    @endforeach
-            </select>
-        </div>
-
-
-
-    </div>
-
-<div class="col-md-12 row">
-   <div class="col-md-6">
-        <div class="form-group">
-            <label for="">Precio</label>
-            <input id="precio" name="precio" type="text" class="form-control">
-        </div>
-    </div>
-   <div class="col-md-6">
-        <div class="w-100">
-            <span>&nbsp;</span>
-                                              <span class="btn btn-success col fileinput-button" onclick="agregar_plato()">
-                                                <i class="fas fa-plus"></i>
-                                                <span  >Añadir Plato</span>
-                                              </span>
-                                            </div>
-                                       </div>
-
+                            <div class="col-md-6">
+                                <div class="form-group mx-auto">
+                                    <label class="mx-auto">Establecer el Día</label>
+                                    <div class="input-group-prepend mx-auto">
+                                        <input name="dia" type="date" class="form-control w-100" value={{$dia}}>
                                     </div>
-
-
-                                </div>
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Precio</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody id="tblPlatos">
-
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-
-                        <!-- /.card-body -->
-
-
-            <div class="row">
-            <div class="col-md-6">
-
-                <div class="card card-secondary">
-                    <div class="card-header">
-                        <h3 class="card-title">DATOS DE CONFIGURACIÒN</h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-
-                        <div class="form-group mx-auto">
-                            <label class="mx-auto">Establecer el Día</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend mx-auto">
-                                    <input name="dia" type="date" class="form-control w-100" value={{$dia}}>
-                                </div>
-                                <div class="invalid-feedback">
-                                    Por favor ingrese el precio
                                 </div>
                             </div>
 
+                            <div class="col-md-6">
 
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="preciomenu">Precio del Menú</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupPrepend">S/.</span>
-                                </div>
-                                <input id="preciomenu" value="{{number_format($preciomenu, 2)}}" name="preciomenu" class="form-control" id="validationCustomUsername" placeholder="Ingrese el precio" aria-describedby="inputGroupPrepend" required>
-                                <div class="invalid-feedback">
-                                    Por favor ingrese el precio
+                                <label for="preciomenu">Precio del Menú</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupPrepend">S/.</span>
+                                    </div>
+                                    <input id="preciomenu" value="{{number_format($preciomenu, 2)}}" name="preciomenu" class="form-control" id="validationCustomUsername" placeholder="Ingrese el precio" aria-describedby="inputGroupPrepend" required>
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese el precio
+                                    </div>
                                 </div>
                             </div>
-
-
                         </div>
-
                     </div>
                     <!-- /.card-body -->
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
 
-                    <!-- /.card -->
-                    <div class="card card-info">
-                        <div class="card-header">
-                            <h3 class="card-title">Menús del Día</h3>
+                        <!-- /.card -->
+                        <div class="card card-info">
+                            <div class="card-header">
+                                <h3 class="card-title">PLATOS DE FONDO</h3>
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="col-md-12" >
-                                <div class="input-group col-md-12">
-                                    <div class="form-group col-md-12 mb-2">
-                                        <div class="input-group">
-                                            <div class="col-md-6">
-                                            <label for="">SELECCIONE EL MENU</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="">INDICAR PORCIONES</label>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <select name="menu" id="menu" class="form-control form-select" onchange="colocar_precio()" >
-                                                    <option selected="false" >Menú</option>
-                                                    @foreach($menus as $menu)
-                                                        <option value="{{ $menu->id }}">{{ $menu->nombre }}</option>
-                                                    @endforeach
-                                                </select>
-
-                                            </div>
-
-                                            <div class="col-md-6">
-
-
-                                            <input class="form-control" id="porciones" name="porciones" value="" />
-
-                                            </div>
-
-
-
-                                        </div>
-
-                                    </div>
-                                            <div class="col-md-12">
-                                                <div class="btn-group w-100 pl-5 pr-5">
-                                              <span class="btn btn-success col fileinput-button" onclick="agregar_menu()">
-                                                <i class="fas fa-plus"></i>
-                                                <span>Añadir Menú</span>
-                                              </span>
+                            <div class="card-body p-0">
+                                <div class="col-md-12" >
+                                    <div class="input-group col-md-12">
+                                        <div class="form-group col-md-12 mb-2">
+                                            <div class="input-group">
+                                                <div class="col-md-6">
+                                                <label for="">SELECCIONE EL MENU</label>
                                                 </div>
+                                                <div class="col-md-6">
+                                                    <label for="">INDICAR PORCIONES</label>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <select name="menu" id="menu" class="form-control form-select" onchange="colocar_precio()" >
+                                                        <option selected="false" >Menú</option>
+                                                        @foreach($menus as $menu)
+                                                            <option value="{{ $menu->id }}">{{ $menu->nombre }}</option>
+                                                        @endforeach
+                                                    </select>
+
+                                                </div>
+
+                                                <div class="col-md-6">
+
+
+                                                <input class="form-control" id="porciones" name="porciones" value="" />
+
+                                                </div>
+
+
+
                                             </div>
 
+                                        </div>
+                                                <div class="col-md-12">
+                                                    <div class="btn-group w-100 pl-5 pr-5">
+                                                  <span class="btn btn-success col fileinput-button" onclick="agregar_menu()">
+                                                    <i class="fas fa-plus"></i>
+                                                    <span>Añadir Menú</span>
+                                                  </span>
+                                                    </div>
+                                                </div>
 
+
+                                    </div>
                                 </div>
-                            </div>
 
 
 
-                            <table id="tblMenus" class="table">
-                                <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Porciones</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-
-                                @if(isset($configmenus))
-
-                                    @foreach($configmenus as $menu)
-                                    <tr id="tr-{{$menu->id}}">
-
-                                        <td>  {{$menu->nombre}}</td>
-                                        <td >{{$menu->porciones}}</td>
-                                        <td class="text-right py-0 align-middle">
-                                            <a href="#" class="btn btn-info" onclick="eliminar_plato(${menu_id})"><i class="fas fa-eye"></i></a>
-                                            <a href="#" class="btn btn-danger" onclick="eliminar_plato(${menu_id})" ><i class="fas fa-trash"></i></a>
-
-                                        </td>
+                                <table id="tblMenus" class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Porciones</th>
+                                        <th></th>
                                     </tr>
-                                    @endforeach
-                                @endif
+                                    </thead>
+                                    <tbody>
+
+                                    @if(isset($configmenus))
+
+                                        @foreach($configmenus as $menu)
+                                        <tr id="tr-{{$menu->id}}">
+
+                                            <td>  {{$menu->nombre}}</td>
+                                            <td >{{$menu->porciones}}</td>
+                                            <td class="text-right py-0 align-middle">
+                                                <a href="#" class="btn btn-info" onclick="eliminar_plato(${menu_id})"><i class="fas fa-eye"></i></a>
+                                                <a href="#" class="btn btn-danger" onclick="eliminar_plato(${menu_id})" ><i class="fas fa-trash"></i></a>
+
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    @endif
 
 
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-
-                    <div class="card card-warning">
-                        <div class="card-header">
-                            <h3 class="card-title text-white">ENTRADAS</h3>
-
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
+                                    </tbody>
+                                </table>
                             </div>
+                            <!-- /.card-body -->
                         </div>
-                        <div class="card-body p-0">
-                            <div class="col-md-12" >
-                                <div class="input-group col-md-12">
-                                    <div class="form-group col-md-12 mb-2">
-                                        <div class="input-group">
-                                            <div class="col-md-6">
-                                                <label for="">SELECCIONE LA ENTRADA</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="">INDICAR PORCIONES</label>
-                                            </div>
+                        <!-- /.card -->
+                </div>
+                <div class="col-md-6">
+                        <div class="card card-warning">
+                            <div class="card-header">
+                                <h3 class="card-title text-white">ENTRADAS</h3>
 
-                                            <div class="col-md-6">
-                                                <select name="entrada" id="entrada" class="form-control form-select" >
-                                                    <option selected="false" >Entrada</option>
-                                                    @foreach($entradas as $entrada)
-                                                        <option value="{{ $entrada->id }}">{{ $entrada->nombre }}</option>
-                                                    @endforeach
-                                                </select>
-
-                                            </div>
-
-                                            <div class="col-md-6">
-
-
-                                                <input class="form-control" id="porcionesentrada" name="porcionesentrada" value="" />
-
-                                            </div>
-
-
-
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="btn-group w-100 pl-5 pr-5">
-                                              <span class="btn btn-success col fileinput-button" onclick="agregar_entrada()">
-                                                <i class="fas fa-plus"></i>
-                                                <span>Añadir Entrada</span>
-                                              </span>
-                                        </div>
-                                    </div>
-
-
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
                                 </div>
                             </div>
+                            <div class="card-body p-0">
+                                <div class="col-md-12" >
+                                    <div class="input-group col-md-12">
+                                        <div class="form-group col-md-12 mb-2">
+                                            <div class="input-group">
+                                                <div class="col-md-6">
+                                                    <label for="">SELECCIONE LA ENTRADA</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="">INDICAR PORCIONES</label>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <select name="entrada" id="entrada" class="form-control form-select" >
+                                                        <option selected="false" >Entrada</option>
+                                                        @foreach($entradas as $entrada)
+                                                            <option value="{{ $entrada->id }}">{{ $entrada->nombre }}</option>
+                                                        @endforeach
+                                                    </select>
+
+                                                </div>
+
+                                                <div class="col-md-6">
+
+
+                                                    <input class="form-control" id="porcionesentrada" name="porcionesentrada" value="" />
+
+                                                </div>
 
 
 
-                            <table id="tblEntradas" class="table">
-                                <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Porciones</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="btn-group w-100 pl-5 pr-5">
+                                                  <span class="btn btn-success col fileinput-button" onclick="agregar_entrada()">
+                                                    <i class="fas fa-plus"></i>
+                                                    <span>Añadir Entrada</span>
+                                                  </span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+
+                                <table id="tblEntradas" class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Porciones</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
 
 
 
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card-body -->
-                    </div>
-
                 </div>
             </div>
+           
             <div class="row">
                 <div class="col-12">
                     <a href="#" class="btn btn-secondary">Cancelar</a>
