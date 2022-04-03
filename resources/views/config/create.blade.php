@@ -19,13 +19,7 @@
 
 
 @section('content_header')
-    <section class="content">
-        <div class="row bg-softpurple p-2 justify-content-center" >
-            <div class="col-md-4 col-auto text-center "><b>CONFIGURAR NUEVO DÍA</b></div>
-        </div>
 
-
-    </section>
 
 @stop
 
@@ -41,13 +35,15 @@
 
         <!-- Main content -->
         <section class="content">
+            <div class="card p-2 m-2">
+                <div class="card-header text-center">CONFIGURAR NUEVO DÍA</div>
 
-            <div class="row">
-                <div class="col-md-12">
 
-                    <div class="card card-primary">
 
-                        <div class="card-body row">
+
+                    <div class="card card-primary  m2 bg-plomito">
+
+                        <div class="card-body row ">
 
                             <div class="col-md-6">
                                 <div class="form-group mx-auto">
@@ -74,8 +70,8 @@
                         </div>
                     </div>
                     <!-- /.card-body -->
-                </div>
-            </div>
+
+
 
             <div class="row">
                 <div class="col-md-6">
@@ -131,9 +127,9 @@
                                     <table id="tblMenus" class="table">
                                         <thead>
                                         <tr>
-                                            <th>Nombre</th>
-                                            <th>Porciones</th>
-                                            <th></th>
+                                            <th style="width:50%">Nombre</th>
+                                            <th style="width:10%">Porc.</th>
+                                            <th style="width:40%"></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -220,9 +216,9 @@
                                 <table id="tblEntradas" class="table">
                                     <thead>
                                     <tr>
-                                        <th>Nombre</th>
-                                        <th>Porciones</th>
-                                        <th></th>
+                                        <th style="width:50%">Nombre</th>
+                                        <th style="width:10%">Porc.</th>
+                                        <th style="width:40%"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -238,11 +234,18 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-12">
-                    <a href="#" class="btn btn-secondary">Cancelar</a>
-                    <input type="submit" value="Guardar Cambios" class="btn btn-success float-right">
+            <div class="card bg-plomito p-3">
+                <div class="row col-12">
+                        <div class="col-6 text-center">
+                            <a href="#" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                        <div class="col-6 text-center" >
+                        <input type="submit" value="Guardar Cambios" class="btn btn-primary">
+                        </div>
                 </div>
+</div>
+            </div>
+
             </div>
         </section>
         <!-- /.content -->

@@ -1167,6 +1167,9 @@ select {
 .float-none {
 	float: none;
 }
+.m-2 {
+	margin: 0.5rem;
+}
 .m-3 {
 	margin: 0.75rem;
 }
@@ -1178,9 +1181,6 @@ select {
 }
 .m-4 {
 	margin: 1rem;
-}
-.m-2 {
-	margin: 0.5rem;
 }
 .m-auto {
 	margin: auto;
@@ -1653,11 +1653,11 @@ select {
 .p-6 {
 	padding: 1.5rem;
 }
-.p-3 {
-	padding: 0.75rem;
-}
 .p-0 {
 	padding: 0px;
+}
+.p-3 {
+	padding: 0.75rem;
 }
 .p-4 {
 	padding: 1rem;
@@ -2028,8 +2028,8 @@ body{
 
 }
 .bg-plomito {
-    color: #064a93 !important;
-    background-color: #d5d5d5 !important;
+
+    background-color: #e3e3e3 !important;
 
 }
 .rosita {
