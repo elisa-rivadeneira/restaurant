@@ -36,7 +36,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="card p-2 m-2">
-                <div class="card-header text-center">CONFIGURAR NUEVO DÍA</div>
+                <div class="card-header text-center"><B>CONFIGURAR NUEVO DÍA</B></div>
 
 
 
@@ -78,8 +78,8 @@
 
                         <!-- /.card -->
                         <div class="card ">
-                            <div class="card-header bg-pink">
-                                <h3 class="card-title">PLATOS DE FONDO</h3>
+                            <div class="card-header bg-orangetitle">
+                                <h3 class="card-title fontsmall"><b>PLATOS DE FONDO</b></h3>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -87,7 +87,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body p-2">
                                 <div class="col-md-12" >
                                         <div class="col-md-12 mb-2">
                                              <label for="">SELECCIONE EL PLATO DE FONDO</label>
@@ -103,7 +103,7 @@
                                                     </div>
 
 
-                                        <div class="input-group col-md-12">
+                                        <div class="input-group col-md-12 mt-4">
                                             <div class="col-md-12 mb-2">
                                                     <label for="">INDICAR PORCIONES</label>
                                             </div>
@@ -116,7 +116,7 @@
                             </div>
                                                 <div class="col-md-12">
                                                     <div class="btn-group w-100 pl-5 pr-5">
-                                                  <span class="btn btn-primary mb-2" onclick="agregar_menu()">
+                                                  <span class="btn bg-orange mb-2" onclick="agregar_menu()">
                                                     <i class="fas fa-plus"></i>
                                                     <span>Añadir Menú</span>
                                                   </span>
@@ -161,9 +161,9 @@
                             </div>
 
                 <div class="col-md-6">
-                        <div class="card card-warning">
-                            <div class="card-header">
-                                <h3 class="card-title text-white">ENTRADAS</h3>
+                        <div class="card ">
+                            <div class="card-header bg-titlegeranio">
+                                <h3 class="card-title text-white fontsmall"><b>ENTRADAS</b></h3>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -171,7 +171,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body p-2">
                                 <div class="col-md-12" >
                                         <div class="col-md-12 mb-2">
                                                     <label for="">SELECCIONE LA ENTRADA</label>
@@ -188,7 +188,7 @@
 
 
 
-                                    <div class="input-group col-md-12">
+                                    <div class="input-group col-md-12 mt-4">
                                         <div class="col-md-12 mb-2">
                                                     <label for="">INDICAR PORCIONES</label>
                                         </div>
@@ -202,7 +202,7 @@
                         </div>
                                         <div class="col-md-12">
                                             <div class="btn-group w-100 pl-5 pr-5">
-                                                  <span class="btn btn-primary  mb-2 " onclick="agregar_entrada()">
+                                                  <span class="btn bg-geranio  mb-2 " onclick="agregar_entrada()">
                                                     <i class="fas fa-plus"></i>
                                                     <span>Añadir Entrada</span>
                                                   </span>
@@ -234,17 +234,17 @@
                 </div>
             </div>
 
-            <div class="card bg-plomito p-3">
+
                 <div class="row col-12">
                         <div class="col-6 text-center">
-                            <a href="#" class="btn btn-secondary">Cancelar</a>
+                            <a href="#" class="btn btn-secondary">CANCELAR</a>
                         </div>
                         <div class="col-6 text-center" >
-                        <input type="submit" value="Guardar Cambios" class="btn btn-primary">
+                        <input type="submit" value="GUARDAR CAMBIOS" class="btn btn-primary">
                         </div>
                 </div>
 </div>
-            </div>
+
 
             </div>
         </section>

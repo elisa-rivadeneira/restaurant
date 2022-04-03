@@ -8,6 +8,8 @@
 }
 body{
     background-color: white  !important;
+    font-size: 0.8em;
+
 }
 
 .bg-pink {
@@ -20,6 +22,30 @@ body{
 .bg-rose {
     color: white !important;
     background-color: #ea1fa8 !important;
+
+}
+
+.bg-orange {
+    color: white !important;
+    background-color: #ef9b00 !important;
+
+}
+
+.bg-orangetitle {
+    color: white !important;
+    background-color: #FFCA29FF !important;
+
+}
+
+.bg-geranio {
+    color: white !important;
+    background-color: #EA1F44FF !important;
+
+}
+
+.bg-titlegeranio {
+    color: white !important;
+    background-color: #fa5572 !important;
 
 }
 
@@ -68,5 +94,9 @@ body{
 
 
 .btn{
-    font-size: 0.8em !important;
+    font-size: 0.9em !important;
+}
+
+.fontsmall{
+    font-size: 1em !important;
 }

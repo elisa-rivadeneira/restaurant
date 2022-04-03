@@ -12,7 +12,7 @@
 @section('content_header')
     <section class="content p-3">
        <div class="card ">
-                <div class="card-header bg-warning">
+                <div class="card-header text-center">
                   <b> CONFIGURACIÓN DEL DÍA</b>
                     <div class="card-tools  ">
                         <button class="btn small">
@@ -41,8 +41,8 @@
                     <!-- /.card -->
                 <div class="col-md-6">
                     <div class="card ml-2">
-                        <div class="card-header bg-pink">
-                            <h3 class="card-title">MENÚS</h3>
+                        <div class="card-header bg-orangetitle">
+                            <h3 class="card-title fontsmall"><B>PLATOS DE FONDO</B></h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -81,8 +81,8 @@
                     <!-- /.card -->
                 <div class="col-md-6">
                     <div class="card mr-2">
-                        <div class="card-header bg-rose">
-                            <h3 class="card-title text-white">ENTRADAS</h3>
+                        <div class="card-header bg-titlegeranio">
+                            <h3 class="card-title text-white fontsmall"><B>ENTRADAS</B></h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
