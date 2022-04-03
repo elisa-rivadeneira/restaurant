@@ -40,7 +40,7 @@
 
                     <!-- /.card -->
                 <div class="col-md-6">
-                    <div class="card ml-2">
+                    <div class="card ml-2 mr-2">
                         <div class="card-header bg-orangetitle">
                             <h3 class="card-title fontsmall"><B>PLATOS DE FONDO</B></h3>
 
@@ -80,7 +80,7 @@
                 </div>
                     <!-- /.card -->
                 <div class="col-md-6">
-                    <div class="card mr-2">
+                    <div class="card mr-2 ml-2">
                         <div class="card-header bg-titlegeranio">
                             <h3 class="card-title text-white fontsmall"><B>ENTRADAS</B></h3>
                             <div class="card-tools">
@@ -115,7 +115,7 @@
                         </div>
                         <!-- /.card-body -->
                     </div>
-            </div>
+                </div>
         </div>
 
 
