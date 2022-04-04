@@ -36,7 +36,7 @@
             <tr>
 
                 <td>{{ $item->mesa}}</td>
-                <td>@if($item->status =='0')
+                <td style="text-align: center">@if($item->status =='0')
                         <a class="btn btn-warning" id="changeStatus" data-id={{$item->id}} data-toggle="modal"  data-target="#ordenplatostatus{{$item->id}}">
                             @if(isset( $item->tiempo_despacho))
                                 {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $item->tiempo_despacho)->diffInMinutes($item->created_at)}} min
@@ -48,7 +48,7 @@
                             SERVIDO</button>
                     @endif
                  </td>
-                <td> {{ $item->porciones}} </td>
+                <td style="text-align: center"> {{ $item->porciones}} </td>
 
                 <td> S/. {{ $item->total}} </td>
                 <td>   <!-- Button trigger modal -->
