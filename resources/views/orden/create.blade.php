@@ -1,6 +1,21 @@
 @extends('layouts.base')
 @section('title', 'Crear Orden')
 
+@section('css')
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+
+    <style>
+        body{
+            /*    text-transform: uppercase; */
+
+        }
+
+    </style>
+
+
+@stop
+
 
 
 
@@ -55,7 +70,8 @@
 
         </ul>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">                   <div class="card mb-4" id="entradas">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="card mb-4" id="entradas">
 
                     <div class="row card-body" id="crearmenu" >
 
@@ -69,11 +85,13 @@
 
                         @foreach($entradas as $keye => $entrada)
 
-                            <div class="form-row row m-4">
-                                <div class="col-md-9 p-1  btn btn-entrada  text-white btn-lg p-3 mb-0" onclick="itemorden(this.id)" id="entrada{{$entrada->id }}"> <h5>{{ $entrada->nombre }}</h5>
-                                    <span class="disponibility">Disponibilidad:</span><div id="porciones-entrada{{$entrada->id }}" value="{{$entrada->porciones}}">{{$entrada->porciones  }}</div>
-                                </div>
-                                <div class="inputbig col-md-2  p-1 m-1">
+                            <div class="form-row row m-2 p-0">
+                                    <div class="col-9 pt-3 p-1 fontsmall btn btn-entrada  text-white btn-lg mb-0" onclick="itemorden(this.id)" id="entrada{{$entrada->id }}"> <h5><b>{{ $entrada->nombre }}</b></h5>
+
+                                            <div class="text-center" id="porciones-entrada{{$entrada->id }}" value="{{$entrada->porciones}}">{{$entrada->porciones  }}</div>
+
+                                   </div>
+                                <div class="inputbig col-2  p-1 m-1">
                                     <input id="ceentrada{{$entrada->id }}" name="cantidadentrada[]" class="form-control btn-lg p-3 input-lg" keye="{{$keye}}" value="0" type="number" >
                                 </div>
 
@@ -141,9 +159,8 @@
 
 
 
-    <div  class="col-12 mt-3 d-flex justify-content-center">
-             <!--   <button id="buttonenviar"  type="submit"
-                        >EMITIR ORDEN</button> -->
+    <div  class="col-12 mt-1 text-center">
+
 
         <div id="pedido" style="display: none" >
 
@@ -153,7 +170,7 @@
 
         <button class="btn btn-primary btn-lg pl-5 pr-5 m-4 float-right" type="submit" value="Submit"  style="visibility:hidden">Enviar</button>
 
-        <button class="btn btn-primary btn-lg pl-5 pr-5 m-4 " type="button" id="btn">EMITIR ORDEN</button>
+        <button class="btn btn-primary btn-lg pl-5 pr-5 m-1 " type="button" id="btn">EMITIR ORDEN</button>
 
     </div>
 
