@@ -21,7 +21,7 @@
         <th>Mesa</th>
         <th>Status</th>
         <th>Cant.</th>
-        <th>T. servido</th>
+        <th>Tiempo</th>
         <th>Total</th>
         <th>Acciones</th>
 
@@ -207,6 +207,15 @@
         /*    text-transform: uppercase; */
 
         }
+
+        table{
+            margin: 0 auto;
+            width: 100%;
+            clear: both;
+            border-collapse: collapse;
+            table-layout: fixed; // ***********add this
+        word-wrap:break-word; // ***********and this
+        }
     </style>
 
 
@@ -260,16 +269,25 @@
         $(document).ready(function() {
             $('#ordenes').DataTable({
                 responsive: true,
-                bAutoWidth: false,
                 "lengthMenu":[[10,20,50,-1], [10,20,50,"All"]],
-                "aoColumns" : [
-                    null,
-                    null,
-                    null,
-                    null,
-                    {"sWidth": "20px"},
-                    { "sWidth": "20px"}]
+                "autoWidth": false,
+                "fixedHeader": {
+                    "header": false,
+                    "footer": false
+                },
+                "columnDefs": [
+                    { "width": "10%", "targets": 0 },
+                    { "width": "20%", "targets": 1 },
+                    { "width": "20%", "targets": 2 },
+                    { "width": "10%", "targets": 3 },
+                    { "width": "10%", "targets": 4 },
+                    { "width": "30%", "targets": 5 }
+                ],
+
+
             });
+
+
 
 
 
