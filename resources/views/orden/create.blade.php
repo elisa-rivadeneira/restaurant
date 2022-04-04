@@ -131,12 +131,12 @@
 
 
 
-                            <div class="form-row row m-4">
-                                <div class="col-md-9 p-1  btn btn-menu btn-lg p-3" onclick="menuorden(this.id)" id="menu{{$menu->id }}"><h5>{{ $menu->nombre }}</h5>
-                                    <span class="disponibility">Disponibilidad:</span><div id="porciones-menu{{$menu->id }}" value="{{$menu->porciones}}">{{$menu->porciones}}</div>
+                            <div class="form-row row m-2 p-0">
+                                <div class="col-9 pt-3 ml-0 p-1 fontsmall btn btn-entrada  text-white btn-lg mb-0" onclick="menuorden(this.id)" id="menu{{$menu->id }}"><h5>{{ $menu->nombre }}</h5>
+                                    <div class="text-center"  id="porciones-menu{{$menu->id }}" value="{{$menu->porciones}}">{{$menu->porciones}}</div>
                                 </div>
-                                <div class="inputbig col-md-2 p-1 m-1">
-                                    <input id="momenu{{$menu->id  }}" name="cantidadmenu[]" class="form-control btn-lg " key="{{$key}}" value="0" type="number" >
+                                <div class="inputbig col-2 mr-0 p-1 m-1">
+                                    <input  class="inputbig pr-0 mr-0  col-12" id="momenu{{$menu->id  }}" name="cantidadmenu[]" class="form-control btn-lg p-3 input-lg" key="{{$key}}" value="0" type="number" >
 
                                 </div>
 
