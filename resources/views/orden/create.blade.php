@@ -86,13 +86,13 @@
                         @foreach($entradas as $keye => $entrada)
 
                             <div class="form-row row m-2 p-0">
-                                    <div class="col-9 pt-3 p-1 fontsmall btn btn-entrada  text-white btn-lg mb-0" onclick="itemorden(this.id)" id="entrada{{$entrada->id }}"> <h5><b>{{ $entrada->nombre }}</b></h5>
+                                    <div class="col-9 pt-3 ml-0 p-1 fontsmall btn btn-entrada  text-white btn-lg mb-0" onclick="itemorden(this.id)" id="entrada{{$entrada->id }}"> <h5><b>{{ $entrada->nombre }}</b></h5>
 
                                             <div class="text-center" id="porciones-entrada{{$entrada->id }}" value="{{$entrada->porciones}}">{{$entrada->porciones  }}</div>
 
                                    </div>
-                                <div class="inputbig col-2  p-1 m-1">
-                                    <input id="ceentrada{{$entrada->id }}" name="cantidadentrada[]" class="form-control btn-lg p-3 input-lg" keye="{{$keye}}" value="0" type="number" >
+                                <div class="inputbig col-2 mr-0 p-1 m-1">
+                                    <input class="inputbig pr-0 mr-0  col-12" id="ceentrada{{$entrada->id }}" name="cantidadentrada[]" class="form-control btn-lg p-3 input-lg" keye="{{$keye}}" value="0" type="number" >
                                 </div>
 
 
