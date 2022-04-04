@@ -2072,6 +2072,9 @@ body{
 .fontsmall{
     font-size: 1em !important;
 }
+.fontsmallest{
+    font-size: 0.7em !important;
+}
 .hover\:border-gray-300:hover {
 	--tw-border-opacity: 1;
 	border-color: rgba(209, 213, 219, var(--tw-border-opacity));

@@ -15,15 +15,15 @@
     <a href="/ordens/create" class="btn btn-primary mb-4" >REALIZAR UNA ORDEN</a>
 
 
-    <table id="ordenes" class="display responsive nowrap table table-striped mt-4 shadow-lg " style="width:100%" >
+    <table id="ordenes" class="display fontsmallest responsive nowrap table table-striped table-condensed mt-4 shadow-lg " style="width:100%" >
         <thead class="bg-primary text-white">
-        <th scope="col" style="width:5%;">ID</th>
-        <th scope="col" style="width:5%;">Mesa</th>
-        <th scope="col" style="width:20%;">Status</th>
-        <th scope="col" style="width:20%;">Porciones</th>
-        <th scope="col" style="width:20%;">T. servido</th>
-        <th scope="col" style="width:20%;">Total</th>
-        <th scope="col" style="width:20%;">Acciones</th>
+
+        <th>Mesa</th>
+        <th>Status</th>
+        <th>Cant.</th>
+        <th>T. servido</th>
+        <th>Total</th>
+        <th>Acciones</th>
 
 
         </thead>
@@ -34,7 +34,7 @@
             @if($item->status!=2)
 
             <tr>
-                <td>{{ $item->id}}</td>
+
                 <td>{{ $item->mesa}}</td>
                 <td>@if($item->status =='0')
                         <a class="btn btn-warning" id="changeStatus" data-id={{$item->id}} data-toggle="modal"  data-target="#ordenplatostatus{{$item->id}}">  PENDIENTE</a>
@@ -196,6 +196,8 @@
 @stop
 
 @section('css')
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
     <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" rel="stylesheet">
@@ -258,8 +260,17 @@
         $(document).ready(function() {
             $('#ordenes').DataTable({
                 responsive: true,
-                "lengthMenu":[[10,20,50,-1], [10,20,50,"All"]]
+                bAutoWidth: false,
+                "lengthMenu":[[10,20,50,-1], [10,20,50,"All"]],
+                "aoColumns" : [
+                    null,
+                    null,
+                    null,
+                    null,
+                    {"sWidth": "20px"},
+                    { "sWidth": "20px"}]
             });
+
 
 
 
