@@ -22,156 +22,164 @@
 
 @section('contenido')
 
-    <form id="ordenador" name="ordenador" action="/orden/guardar" method="post" class="grabado">
-        @csrf
+    <div class="content">
+        <div class="card">
+            <div class="card-header">CREAR ORDEN</div>
+            <div class="card-body">
+                <form id="ordenador" name="ordenador" action="/orden/guardar" method="post" class="grabado">
+                    @csrf
 
-    <div id="mesas" class="card mb-2">
-        <div class="card-header" style="text-align:center;">
-            <h5 style="font-weight: bold;">SELECCIONAR MESA</h5>
-        </div>
+                <div id="mesas" class="card mb-2">
+                    <div class="card-header" style="text-align:center;">
+                        <h5 style="font-weight: bold;">SELECCIONAR MESA</h5>
+                    </div>
 
-            <div class="card-body pl-1 ml-0 mr-0 pr-0 pt-2 pb-2 row d-flex justify-content-center" >
+                        <div class="card-body pl-1 ml-0 mr-0 pr-0 pt-2 pb-2 row d-flex justify-content-center" >
 
-                <div class="p-0 m-0" id="botonesmesas" role="group" style="width:100%" >
-                    @foreach ($mesas as $mesa)
+                            <div class="p-0 m-0" id="botonesmesas" role="group" style="width:100%" >
+                                @foreach ($mesas as $mesa)
 
-                        @if($mesa->estado =='0')
+                                    @if($mesa->estado =='0')
 
-                    <button type="button" class="btn btn-primary fontsmallest col-2 btn m-1 p-1 desoc" id="{{$mesa->id}}" value="{{$mesa->id}}" onclick="seleccionarmesa(this.id)">MESA {{$mesa->id}}</button>
+                                <button type="button" class="btn btn-primary fontsmallest col-2 btn m-1 p-1 desoc" id="{{$mesa->id}}" value="{{$mesa->id}}" onclick="seleccionarmesa(this.id)">MESA {{$mesa->id}}</button>
 
-                        @else
+                                    @else
 
-                            <button type="button" class="btn btn-secondary col-2 btn m-1 p-1" value="{{$mesa->id}}">MESA {{$mesa->id}}</button>
-                        @endif
-                    @endforeach
+                                        <button type="button" class="btn btn-secondary fontsmallest col-2 btn m-1 p-1" value="{{$mesa->id}}">MESA {{$mesa->id}}</button>
+                                    @endif
+                                @endforeach
+                            </div>
+
+                            <input id="mesa" name="mesa" type="hidden" >
+
+
+                            @error('mesa')
+                            <br>
+                            <div class="valida">*{{ $message }}</div>
+                            <br>
+                            @enderror
+                        </div>
+
+
                 </div>
 
-                <input id="mesa" name="mesa" type="hidden" >
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">ENTRADAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">PLATOS DE FONDO</a>
+                    </li>
+
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="card mb-4" id="entradas">
+
+                                <div class="row card-body" id="crearmenu" >
+
+                                    @php
+                                        $content = count($entradas);
 
 
-                @error('mesa')
-                <br>
-                <div class="valida">*{{ $message }}</div>
-                <br>
-                @enderror
-            </div>
+                                    @endphp
+                                    <input id="entradaslista" type="hidden" value="{{$content}}">
 
 
-    </div>
+                                    @foreach($entradas as $keye => $entrada)
 
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <div class="form-row row m-2 p-0">
+                                                <div class="col-9 pt-3 ml-0 p-1 fontsmall btn btn-entrada  text-white btn-lg mb-0" onclick="itemorden(this.id)" id="entrada{{$entrada->id }}"> <h5><b>{{ $entrada->nombre }}</b></h5>
 
-        <li class="nav-item">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">ENTRADAS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">PLATOS DE FONDO</a>
-        </li>
+                                                        <div class="text-center" id="porciones-entrada{{$entrada->id }}" value="{{$entrada->porciones}}">{{$entrada->porciones  }}</div>
 
-        </ul>
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <div class="card mb-4" id="entradas">
-
-                    <div class="row card-body" id="crearmenu" >
-
-                        @php
-                            $content = count($entradas);
+                                               </div>
+                                            <div class="inputbig col-2 mr-0 p-1 m-1">
+                                                <input class="inputbig pr-0 mr-0  col-12" id="ceentrada{{$entrada->id }}" name="cantidadentrada[]" class="form-control btn-lg p-3 input-lg" keye="{{$keye}}" value="0" type="number" >
+                                            </div>
 
 
-                        @endphp
-                        <input id="entradaslista" type="hidden" value="{{$content}}">
+                                            <input type="hidden" name="entrada_id[]" value="{{$entrada->id }}">
 
 
-                        @foreach($entradas as $keye => $entrada)
 
-                            <div class="form-row row m-2 p-0">
-                                    <div class="col-9 pt-3 ml-0 p-1 fontsmall btn btn-entrada  text-white btn-lg mb-0" onclick="itemorden(this.id)" id="entrada{{$entrada->id }}"> <h5><b>{{ $entrada->nombre }}</b></h5>
 
-                                            <div class="text-center" id="porciones-entrada{{$entrada->id }}" value="{{$entrada->porciones}}">{{$entrada->porciones  }}</div>
 
-                                   </div>
-                                <div class="inputbig col-2 mr-0 p-1 m-1">
-                                    <input class="inputbig pr-0 mr-0  col-12" id="ceentrada{{$entrada->id }}" name="cantidadentrada[]" class="form-control btn-lg p-3 input-lg" keye="{{$keye}}" value="0" type="number" >
+
+                                        </div>
+                                    @endforeach
+                                    <input id="cantentradas" name="cantentradas"  type="hidden" value="0">
+
+
+
+
                                 </div>
 
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
-                                <input type="hidden" name="entrada_id[]" value="{{$entrada->id }}">
+                            <div class="card " id="platodefondo">
+
+                                <div class="row card-body" id="crearmenu" >
+
+                                    @php
+                                        $contmen = count($menus);
+
+
+                                    @endphp
+                                    <input id="menuslista" type="hidden" value="{{$contmen}}">
+
+                                    @foreach($menus as $key => $menu)
 
 
 
+                                        <div class="form-row row m-2 p-0">
+                                            <div class="col-9 pt-3 ml-0 p-1 fontsmall btn btn-entrada  text-white btn-lg mb-0" onclick="menuorden(this.id)" id="menu{{$menu->id }}"><h5>{{ $menu->nombre }}</h5>
+                                                <div class="text-center"  id="porciones-menu{{$menu->id }}" value="{{$menu->porciones}}">{{$menu->porciones}}</div>
+                                            </div>
+                                            <div class="inputbig col-2 mr-0 p-1 m-1">
+                                                <input  class="inputbig pr-0 mr-0  col-12" id="momenu{{$menu->id  }}" name="cantidadmenu[]" class="form-control btn-lg p-3 input-lg" key="{{$key}}" value="0" type="number" >
 
+                                            </div>
+
+
+
+                                            <input type="hidden" name="menu_id[]" value="{{$menu->id }}">
+
+                                        </div>
+                                    @endforeach
+                                    <input id="cantmenus" name="cantmenus" value="0" type="hidden">
+
+                                </div>
 
 
                             </div>
-                        @endforeach
-                        <input id="cantentradas" name="cantentradas"  type="hidden" value="0">
 
-
-
-
+                        </div>
                     </div>
 
-                </div>
-            </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-
-                <div class="card " id="platodefondo">
-
-                    <div class="row card-body" id="crearmenu" >
-
-                        @php
-                            $contmen = count($menus);
-
-
-                        @endphp
-                        <input id="menuslista" type="hidden" value="{{$contmen}}">
-
-                        @foreach($menus as $key => $menu)
 
 
 
-                            <div class="form-row row m-2 p-0">
-                                <div class="col-9 pt-3 ml-0 p-1 fontsmall btn btn-entrada  text-white btn-lg mb-0" onclick="menuorden(this.id)" id="menu{{$menu->id }}"><h5>{{ $menu->nombre }}</h5>
-                                    <div class="text-center"  id="porciones-menu{{$menu->id }}" value="{{$menu->porciones}}">{{$menu->porciones}}</div>
-                                </div>
-                                <div class="inputbig col-2 mr-0 p-1 m-1">
-                                    <input  class="inputbig pr-0 mr-0  col-12" id="momenu{{$menu->id  }}" name="cantidadmenu[]" class="form-control btn-lg p-3 input-lg" key="{{$key}}" value="0" type="number" >
-
-                                </div>
+                <div  class="col-12 mt-1 text-center">
 
 
-
-                                <input type="hidden" name="menu_id[]" value="{{$menu->id }}">
-
-                            </div>
-                        @endforeach
-                        <input id="cantmenus" name="cantmenus" value="0" type="hidden">
+                    <div id="pedido" style="display: none" >
 
                     </div>
 
 
-                </div>
 
+
+                    <button class="btn btn-primary" type="button" id="btn">EMITIR ORDEN</button>
+                    <button class="btn btn-primary btn-lg pl-5 pr-5 m-4 float-right" type="submit" value="Submit"  style="visibility:hidden">Enviar</button>
+
+
+                </div>
             </div>
         </div>
-
-
-
-
-    <div  class="col-12 mt-1 text-center">
-
-
-        <div id="pedido" style="display: none" >
-
-        </div>
-
-
-
-        <button class="btn btn-primary btn-lg pl-5 pr-5 m-4 float-right" type="submit" value="Submit"  style="visibility:hidden">Enviar</button>
-
-        <button class="btn btn-primary btn-lg pl-5 pr-5 m-1 " type="button" id="btn">EMITIR ORDEN</button>
-
     </div>
 
         @endsection
