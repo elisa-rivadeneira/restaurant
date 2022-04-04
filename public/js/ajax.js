@@ -159,15 +159,14 @@ $('body').on('click', '#cobrarOrden', function (event) {
             console.log('esta es la datamenus',datamenus);
             $.each(datamenus, function (key, diti) {
                 var rows = '';
-                rows = rows + '<div class="col-md-12 text-primary d-flex justify-content-center">MENUS PEDIDOS</div>';
 
-                rows = rows + '<div class="col-md-4 text-primary ">Cantidad</div>';
-                rows = rows + '<div class="col-md-8 text-primary">Plato de Fondo</div>';
+                rows = rows + '<div class="col-4  bg-orange text-primary ">Cantidad</div>';
+                rows = rows + '<div class="col-8  bg-orange text-primary">Plato de Fondo</div>';
                 var i = '1';
 
                 $.each(diti, function (key, value) {
-                    rows = rows + '<div class="col-md-4 ">' + value.cantidad + '</div>';
-                    rows = rows + '<div class="col-md-8 ">' + value.nombre + '</div>';
+                    rows = rows + '<div class="col-4 ">' + value.cantidad + '</div>';
+                    rows = rows + '<div class="col-8 ">' + value.nombre + '</div>';
                     i++;
                 });
 
@@ -188,15 +187,14 @@ $('body').on('click', '#cobrarOrden', function (event) {
             console.log(dataentradas);
             $.each(dataentradas, function (key, diti) {
                 var rows = '';
-                rows = rows + '<div class="col-md-12 text-primary d-flex justify-content-center">ENTRADAS PEDIDOS</div>';
 
-                rows = rows + '<div class="col-md-4 text-primary ">Cantidad</div>';
-                rows = rows + '<div class="col-md-8 text-primary">Entrada</div>';
+                rows = rows + '<div class="col-4 bg-geranio text-primary ">Cantidad</div>';
+                rows = rows + '<div class="col-8 bg-geranio text-primary">Entrada</div>';
                 var i = '1';
 
                 $.each(diti, function (key, value) {
-                    rows = rows + '<div class="col-md-4 ">' + value.cantidad + '</div>';
-                    rows = rows + '<div class="col-md-8 ">' + value.nombre + '</div>';
+                    rows = rows + '<div class="col-4 ">' + value.cantidad + '</div>';
+                    rows = rows + '<div class="col-8 ">' + value.nombre + '</div>';
                     i++;
                 });
 
@@ -217,15 +215,14 @@ $('body').on('click', '#cobrarOrden', function (event) {
             console.log('Monto a cobrar',montoacobrar);
             $.each(montoacobrar, function (key, diti) {
                 var rows = '';
-                rows = rows + '<div class="col-md-12 text-primary d-flex justify-content-center">MONTO A COBRAR</div>';
 
-                rows = rows + '<div class="col-md-6 text-primary ">Nro de Menus</div>';
-                rows = rows + '<div class="col-md-6 text-primary">TOTAL</div>';
+                rows = rows + '<div class="col-6 bg-primary ">Nro de Menus</div>';
+                rows = rows + '<div class="col-6 bg-primary">MONTO A COBRAR</div>';
                 var i = '1';
 
                 $.each(diti, function (key, value) {
-                    rows = rows + '<div class="col-md-6 ">' + value.cantidad + '</div>';
-                    rows = rows + '<div class="col-md-6 ">' + value.total + '</div>';
+                    rows = rows + '<div class="col-6 ">' + value.cantidad + '</div>';
+                    rows = rows + '<div class="col-6 ">S/. ' + value.total + '</div>';
                     i++;
                 });
 

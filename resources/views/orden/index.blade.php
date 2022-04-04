@@ -11,19 +11,19 @@
 
 @section('content')
 
+    <div id="container">
+        <a href="/ordens/create" class="btn btn-primary mb-4" >REALIZAR UNA ORDEN</a>
 
-    <a href="/ordens/create" class="btn btn-primary mb-4" >REALIZAR UNA ORDEN</a>
 
 
-    <table id="ordenes" class="display fontsmallest responsive nowrap table table-striped table-condensed mt-4 shadow-lg " style="width:100%" >
+        <table id="ordenes" class="display fontsmallest responsive nowrap table table-striped table-condensed mt-4 shadow-lg " style="width:100%" >
         <thead class="bg-primary text-white">
 
-        <th>Mesa</th>
-        <th>Status</th>
-        <th>Cant.</th>
-        <th>Tiempo</th>
-        <th>Total</th>
-        <th>Acciones</th>
+        <th style="width:10%">Mesa</th>
+        <th style="width:20%">Espera</th>
+        <th style="width:30%">Cant.</th>
+        <th style="width:20%">Total</th>
+        <th style="width:20%">Acción</th>
 
 
         </thead>
@@ -37,34 +37,28 @@
 
                 <td>{{ $item->mesa}}</td>
                 <td>@if($item->status =='0')
-                        <a class="btn btn-warning" id="changeStatus" data-id={{$item->id}} data-toggle="modal"  data-target="#ordenplatostatus{{$item->id}}">  PENDIENTE</a>
+                        <a class="btn btn-warning" id="changeStatus" data-id={{$item->id}} data-toggle="modal"  data-target="#ordenplatostatus{{$item->id}}">
+                            @if(isset( $item->tiempo_despacho))
+                                {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $item->tiempo_despacho)->diffInMinutes($item->created_at)}} min
+                            @else
+                                {{ $hoy->diffInMinutes($item->created_at)}} min
+                            @endif</a>
                     @elseif( $item->status=='1')
-                        <a  class="btn btn-primary" data-id={{$item->id}} data-toggle="modal"  data-target="#ordenplatostatus{{$item->id}}">  SERVIDO</a>
+                        <button class="btn btn-primary" type="button" id="cobrarOrden" data-id={{$item->id}}  data-toggle="modal" data-target="#cobrarorden{{$item->id}}">
+                            SERVIDO</button>
                     @endif
                  </td>
                 <td> {{ $item->porciones}} </td>
-                <td class="time">
-                    @if(isset( $item->tiempo_despacho))
-                        {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $item->tiempo_despacho)->diffInMinutes($item->created_at)}} min
-                    @else
-                        {{ $hoy->diffInMinutes($item->created_at)}} min
-                    @endif
-                </td>
-                <td> {{ $item->total}} </td>
+
+                <td> S/. {{ $item->total}} </td>
                 <td>   <!-- Button trigger modal -->
                     <form action="{{route ('ordens.destroy', $item->id) }}" method="POST" class="formelimi">
-                        <div class="row" >
-                                       <div  >
-                            <a class="btn btn-info" id="mirarOrden" data-id={{$item->id}} data-toggle="modal"  data-target="#orden{{$item->id}}" >Ver</a>
-                                           <!-- Button trigger modal -->
-                           <button class="btn btn-primary" type="button" id="cobrarOrden" data-id={{$item->id}}  data-toggle="modal" data-target="#cobrarorden{{$item->id}}">
-                                              COBRAR
-                                           </button>
 
-                                  @csrf
+                                       <div style="text-align: center" >
+                                      @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger ">Borrar</button></div>
-                        </div>
+                                            <button type="submit" class="btn btn-danger ">x</button></div>
+
                     </form>
                 </td>
             </tr>
@@ -110,7 +104,7 @@
                             <div class="row" id="dataentradascobrar{{ $item->id}}">
                             </div>
 
-                            <div class="row" id="datacobrar{{ $item->id}}">
+                            <div class="row mt-3" id="datacobrar{{ $item->id}}">
                             </div>
 
 
@@ -150,7 +144,6 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
-                            <button type="button" class="btn btn-primary">COBRAR</button>
                         </div>
                     </div>
                 </div>
@@ -192,7 +185,7 @@
         </tbody>
     </table>
 
-
+    </div>
 @stop
 
 @section('css')
@@ -263,19 +256,8 @@
             $('#ordenes').DataTable({
                 responsive: true,
                 "lengthMenu":[[10,20,50,-1], [10,20,50,"All"]],
-                "autoWidth": false,
-                "fixedHeader": {
-                    "header": false,
-                    "footer": false
-                },
-                "columnDefs": [
-                    { "width": "10%", "targets": 0 },
-                    { "width": "20%", "targets": 1 },
-                    { "width": "20%", "targets": 2 },
-                    { "width": "10%", "targets": 3 },
-                    { "width": "10%", "targets": 4 },
-                    { "width": "30%", "targets": 5 }
-                ],
+
+
 
 
             });
