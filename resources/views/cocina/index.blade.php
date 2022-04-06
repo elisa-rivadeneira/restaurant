@@ -14,11 +14,10 @@
 
     <table id="ordenes" class="display responsive nowrap table table-striped mt-4 shadow-lg " style="width:100%" >
         <thead class="bg-primary text-white">
-        <th scope="col" style="width:5%;">#</th>
-        <th scope="col" style="width:5%;">Nombre</th>
-        <th scope="col" style="width:20%;">Cantidad</th>
-        <th scope="col" style="width:20%;">Mesa</th>
-        <th scope="col" style="width:20%;">Tiempo Preparación</th>
+        <th scope="col" style="width:5%;">Mesa</th>
+        <th scope="col" style="width:35%;">Nombre</th>
+        <th scope="col" style="width:5%;" >Cantidad</th>
+        <th scope="col" style="width:25%;">Tiempo Preparación</th>
         <th scope="col" style="width:20%;">Despacho</th>
 
 
@@ -29,57 +28,56 @@
 
         @foreach ($menus as $key=>$menu)
 
-                <tr>
-                    <td>{{ ($key+1) }}</td>
-                    <td>{{ $menu->nombre}}</td>
-                    <td>{{ $menu->cantidad}}</td>
-                    <td>{{ $menu->mesa}}</td>
-                    <td class="time">
-                        @if(isset( $menu->t_preparacion))
-                            {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $menu->t_preparacion)->diffInMinutes($menu->tiempo_solicitud)}} min
-                        @else
-                            {{ $hoy->diffInMinutes($menu->tiempo_solicitud)}} min
-                            @endif
-                    </td>
+            <tr >
+                <td >{{ $menu->mesa}}</td>
+                <td>{{ $menu->nombre}}</td>
+                <td ><span >{{ $menu->cantidad}}</span></td>
+                <td class="time" >
+                    @if(isset( $menu->t_preparacion))
+                        {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $menu->t_preparacion)->diffInMinutes($menu->tiempo_solicitud)}} min
+                    @else
+                        {{ $hoy->diffInMinutes($menu->tiempo_solicitud)}} min
+                    @endif
+                </td>
 
-                    <td>@if($menu->estado =='0')
-                            <a class="btn btn-warning" id="changeStatus" data-id={{$menu->idordenmenu}} data-toggle="modal"  data-target="#ordenplatostatus{{$menu->idordenmenu}}">  PENDIENTE</a>
-                        @elseif( $menu->estado=='1')
-                            <a  class="btn btn-primary" data-id={{$menu->idordenmenu}} data-toggle="modal"  data-target="#ordenplatostatus{{$menu->idordenmenu}}"> PREPARADO</a>
-                        @endif
-                    </td>
+                <td >@if($menu->estado =='0')
+                        <a class="btn btn-warning" id="changeStatus" data-id={{$menu->idordenmenu}} data-toggle="modal"  data-target="#ordenplatostatus{{$menu->idordenmenu}}">  PENDIENTE</a>
+                    @elseif( $menu->estado=='1')
+                        <a  class="btn btn-primary" data-id={{$menu->idordenmenu}} data-toggle="modal"  data-target="#ordenplatostatus{{$menu->idordenmenu}}"> PREPARADO</a>
+                    @endif
+                </td>
 
-                </tr>
+            </tr>
 
-                <div class="modal fade" id="ordenplatostatus{{ $menu->idordenmenu }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">CAMBIAR ESTADO</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body" >
-                                <div class="row center-block"  style="width: 100%;">
-                                    <div class="col-md-12"><a href="/cocina/{{$menu->idordenmenu}}/status0" class="btn btn-warning btn-block m-1" id="changeStatus" data-id={{$menu->idordenmenu}} >  PENDIENTE</a> </div>
-                                    <div class="col-md-12"> <a href="/cocina/{{$menu->idordenmenu}}/status1" class="btn btn-primary btn-block m-1" id="changeStatus" data-id={{$menu->idordenmenu}}>  PREPARADO</a></div>
-
-                                </div>
-
-
-
-
-
+            <div class="modal fade" id="ordenplatostatus{{ $menu->idordenmenu }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">CAMBIAR ESTADO</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" >
+                            <div class="row center-block"  style="width: 100%;">
+                                <div class="col-md-12"><a href="/cocina/{{$menu->idordenmenu}}/status0" class="btn btn-warning btn-block m-1" id="changeStatus" data-id={{$menu->idordenmenu}} >  PENDIENTE</a> </div>
+                                <div class="col-md-12"> <a href="/cocina/{{$menu->idordenmenu}}/status1" class="btn btn-primary btn-block m-1" id="changeStatus" data-id={{$menu->idordenmenu}}>  PREPARADO</a></div>
 
                             </div>
 
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
-                            </div>
+
+
+
+
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
                         </div>
                     </div>
                 </div>
+            </div>
 
 
 
@@ -88,10 +86,10 @@
         @foreach ($entradas as $key=>$entrada)
 
             <tr>
-                <td>{{ ($key+1) }}</td>
+                <td >{{ $entrada->mesa}}</td>
                 <td>{{ $entrada->nombre}}</td>
                 <td>{{ $entrada->cantidad}}</td>
-                <td>{{ $entrada->mesa}}</td>
+
                 <td class="time">
                     @if(isset( $entrada->t_preparacion))
                         {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $entrada->t_preparacion)->diffInMinutes($entrada->tiempo_solicitud)}} min
@@ -189,7 +187,7 @@
 
     <style>
         body{
-         /*   text-transform: uppercase; */
+            /*   text-transform: uppercase; */
 
         }
 

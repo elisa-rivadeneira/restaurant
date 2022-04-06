@@ -249,7 +249,7 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        
+
 
         [
             'text'        => 'CREAR ORDEN',
