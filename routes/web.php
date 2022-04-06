@@ -26,9 +26,9 @@ Route::resource('users','App\Http\Controllers\UserController');
 });
 
 //Route::get('/dash', 'App\Http\Controllers\DashboardController@index')
-Route::get('/config', 'App\Http\Controllers\ConfigController@index')->name('admin.config');
+Route::get('/config', 'App\Http\Controllers\ConfigController@index')->name('config');
 Route::post('/config/guardar', 'App\Http\Controllers\ConfigController@store')->name('admin.config.guardar');
-Route::get('/config/create', 'App\Http\Controllers\ConfigController@create')->name('admin.config.create');
+Route::get('/config/create', 'App\Http\Controllers\ConfigController@create')->name('config.create');
 Route::get('/config/edit/{id}', 'App\Http\Controllers\ConfigController@edit')->name('admin.config.edit');
 Route::post('/config/{id}', 'App\Http\Controllers\ConfigController@update')->name('admin.config.update');
 
@@ -49,6 +49,8 @@ Route::get('/orden/{id}/mirarentradas', 'App\Http\Controllers\OrdenPlatoControll
 Route::get('/orden/{id}/mostrarcobrarplatos', 'App\Http\Controllers\OrdenController@mostrarcobrarplatos');
 Route::get('/orden/{id}/mostrarcobrarmenus', 'App\Http\Controllers\OrdenController@mostrarcobrarmenus');
 Route::get('/orden/{id}/montoacobrar', 'App\Http\Controllers\OrdenController@montoacobrar')->name('orden.montoacobrar');
+Route::get('/ordens/create', 'App\Http\Controllers\OrdenController@create')->name('ordens.create');
+Route::get('/ordens', 'App\Http\Controllers\OrdenController@index')->name('ordens.index');
 
 Route::get('/orden/{id}/mirarmenus', 'App\Http\Controllers\OrdenPlatoController@mirarmenus');
 Route::get('/orden/{id}/mirarentrada', 'App\Http\Controllers\OrdenPlatoController@mirarentrada');
@@ -70,6 +72,13 @@ Route::get('/ventasplatosmes/{id}', 'App\Http\Controllers\VentaController@ventas
 Route::get('/mensual', 'App\Http\Controllers\VentaController@mensual');
 Route::get('/ventasmes/{id}', 'App\Http\Controllers\VentaController@ventasmes');
 Route::resource('compras', 'App\Http\Controllers\CompraController');
+Route::get('/compras/create', 'App\Http\Controllers\CompraController@create')->name('compras.create');
+Route::get('/compras', 'App\Http\Controllers\CompraController@index')->name('compras.index');
+Route::get('/insumos', 'App\Http\Controllers\InsumoController@index')->name('insumos.index');
+Route::get('/insumos/create', 'App\Http\Controllers\InsumoController@create')->name('insumos.create');
+
+
+
 Route::post("/compra/guardar", "App\Http\Controllers\CompraInsumoController@save");
 Route::get('/compra/{id}/mirar', 'App\Http\Controllers\CompraInsumoController@mirar')->name('compra.mirarid');
 Route::get('/menu/{id}/mirar', 'App\Http\Controllers\MenuController@mirar')->name('menu.mirarid');
@@ -80,6 +89,9 @@ Route::post('/menu/guardar', 'App\Http\Controllers\MenuController@save')->name('
 
 
 Route::resource('proveedores', 'App\Http\Controllers\ProveedorController');
+Route::get('/proveedores/create', 'App\Http\Controllers\ProveedorController@create')->name('proveedores.create');
+Route::get('/proveedores', 'App\Http\Controllers\ProveedorController@index')->name('proveedores.index');
+
 Route::get('/cocina', 'App\Http\Controllers\CocinaController@index')->name('cocina.index');
 
 Route::get('/cocina/{id}/status0', 'App\Http\Controllers\CocinaController@status0');

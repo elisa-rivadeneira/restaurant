@@ -250,76 +250,155 @@ return [
             'can'  => 'manage-blog',
         ],
 
+        [
+            'text'        => 'CREAR ORDEN',
+            'url'         => '/ordens/create',
+            'icon'        => 'fas fa-plus',
+            'can'  => 'ordens.mozocreate',
+        ],
+        [
+            'text'        => 'LISTA DE ORDENES',
+            'url'         => '/ordens',
+            'icon'        => 'far fa-fw fa-hand-paper',
+            'label'       => 4,
+            'label_color' => 'success',
+            'can'         => 'ordens.index'
+
+        ],
 
         [
-            'text'    => 'ADMINISTRACION',
-            'icon'    => 'fas fa-solid fa-circle-plus',
-            'submenu' => [
-
-                [
-            'text'        => 'Menús del Día',
-            'url'         => '/config',
-            'icon'        => 'far fa-fw fa-kiss-beam',
+            'text'        => ' NUEVO DÍA',
+            'url'         => '/config/create',
+            'icon'        => 'fas fa-plus',
             'label_color' => 'success',
+            'can'  => 'config.create',
         ],
+        [
+            'text'        => 'MENÚS DEL DÍA',
+            'url'         => '/config',
+            'icon'        => 'fas fa-mortar-pestle',
+            'label_color' => 'success',
+            'can'  => 'config',
+        ],
+
+
+
+        [
+            'text'    => 'COMPRAS',
+            'icon'    => 'fas fa-solid fa-circle-plus',
+            'can'  => 'compras.create',
+            'submenu' => [
                 [
-                    'text'        => 'Nuevo Día',
-                    'url'         => '/config/create',
-                    'icon'        => 'fas fa-plus',
+                    'text'        => 'Crear Compra',
+                    'url'         => '/compras/create',
+                    'icon'        => 'far fa-fw fa-keyboard',
                     'label_color' => 'success',
+                    'can'  => 'compras.create',
+
                 ],
 
-
                 [
-                    'text'        => 'Compras',
+                    'text'        => 'Lista de Compras',
                     'url'         => '/compras',
                     'icon'        => 'far fa-fw fa-keyboard',
                     'label_color' => 'success',
+                    'can'  => 'compras.index',
 
-                ],
+                ],],],
 
+
+
+        [
+            'text'    => 'PROVEEDORES',
+            'icon'    => 'fas fa-solid fa-circle-plus',
+            'can'  => 'proveedores.create',
+            'submenu' => [
                 [
-                    'text'        => 'Proveedores',
+                    'text'        => 'Lista de Proveedores',
                     'url'         => '/proveedores',
                     'icon'        => 'far fa-fw fa-grin-hearts',
+                    'can'  => 'proveedores.index',
 
                 ],
-
-
-
-
-        [
-            'text'        => 'Insumos',
-            'url'         => '/insumos',
-            'icon'        => 'far fa-fw fa-grin-squint',
-
-        ],
 
                 [
-                    'text'        => 'Menus',
-                    'url'         => '/menus',
-                    'icon'        => 'far fa-fw fa-hand-lizard',
+                    'text'        => 'Crear Proveedor',
+                    'url'         => '/proveedores/create',
+                    'icon'        => 'far fa-fw fa-grin-hearts',
+                    'can'  => 'proveedores.create',
+
+                ],
+
+
+
+
+                ],],
+
+        [
+            'text'    => 'INSUMOS',
+            'icon'    => 'fas fa-solid fa-circle-plus',
+            'can'  => 'insumos.create',
+            'submenu' => [
+
+                [
+                    'text'        => 'Lista de Insumos',
+                    'url'         => '/insumos',
+                    'icon'        => 'far fa-fw fa-grin-squint',
 
                 ],
                 [
-                    'text'        => 'Entradas',
-                    'url'         => '/entradas',
-                    'icon'        => 'far fa-fw fa-hand-peace',
+                    'text'        => 'Crear Insumo',
+                    'url'         => '/insumos/create',
+                    'icon'        => 'far fa-fw fa-grin-squint',
 
                 ],
+                ], ],
+
         [
-            'text'        => 'Mesa',
-            'url'         => '/mesas',
-            'icon'        => 'far fa-fw fa-grin-squint-tears',
+            'text'    => 'MENUS',
+            'icon'    => 'fas fa-solid fa-circle-plus',
+            'can'     => 'menus.manage',
+            'submenu' => [
+                        [
+                            'text'        => 'Lista de Platos de Fondo',
+                            'url'         => '/menus',
+                            'icon'        => 'far fa-fw fa-hand-lizard',
 
-        ]
-],
+                        ],
 
-            ],
+                        [
+                            'text'        => 'Crear Plato de Fondo',
+                            'url'         => '/menus/create',
+                            'icon'        => 'far fa-fw fa-hand-lizard',
+
+                        ],
+                        [
+                            'text'        => 'Lista de Entradas',
+                            'url'         => '/entradas',
+                            'icon'        => 'far fa-fw fa-hand-peace',
+
+                        ],
+                        [
+                            'text'        => 'Crear Entrada',
+                            'url'         => '/entradas/create',
+                            'icon'        => 'far fa-fw fa-hand-peace',
+
+                        ],],],
+                [
+                    'text'        => 'MESAS',
+                    'url'         => '/mesas',
+                    'icon'        => 'far fa-fw fa-grin-squint-tears',
+                    'can'     => 'mesas.manage',
+
+                ],
+
+
+
 
             [
                 'text'    => 'USERS',
                 'icon'    => 'fas fa-fw fa-share',
+                'can'     => 'users.manage',
                 'submenu' => [
             [
                 'text' => 'Crear Usuario',
@@ -336,12 +415,14 @@ return [
 
 
             ],
+
             ],
 
         [
             'text'        => 'COCINA',
             'url'         => '/cocina',
             'icon'        => 'far fa-fw fa-grin-tongue-wink',
+            'can'         => 'cocina.manage',
 
 
 
@@ -352,19 +433,14 @@ return [
 
 
 
-        [
-            'text'        => 'ORDENES',
-            'url'         => '/ordens',
-            'icon'        => 'far fa-fw fa-hand-paper',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
+
 
         [
             'text'        => 'VENTAS DEL DÍA',
             'url'         => '/ventas',
             'icon'        => 'far fa-fw fa-hand-scissors',
             'label_color' => 'success',
+            'can'         => 'ventas.manage',
         ],
         /*
                 [
@@ -406,17 +482,20 @@ return [
                         ],
 
                     ],
+                    'can'=>'admin.reportes'
                 ],
 
 
 
-
+],
                 ['header' => 'Perfil de Usuario'],
                 [
                     'text' => 'profile',
                     'url'  => 'user/profile',
                     'icon' => 'fas fa-fw fa-user',
                 ],
+
+
 
                 /*
                  [
@@ -493,7 +572,7 @@ return [
         //     'icon_color' => 'cyan',
         //     'url'        => '#',
         // ],
-    ],
+
 
     /*
     |--------------------------------------------------------------------------

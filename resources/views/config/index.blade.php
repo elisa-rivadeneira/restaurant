@@ -16,7 +16,7 @@
                   <b> CONFIGURACIÓN DEL DÍA</b>
                     <div class="card-tools  ">
                         <button class="btn small">
-                            @can('admin.config.create')
+                            @can('config.create')
                                 <a href="/config/edit/{{$last_config_id}}" class=" btn btn-primary small" >EDITAR DÍA</a>
                             @endcan
                         </button>
