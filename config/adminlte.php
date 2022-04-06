@@ -249,6 +249,12 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        [
+            'text'        => 'TESTING',
+            'url'         => '/dashboard',
+            'icon'        => 'fas fa-plus',
+
+        ],
 
         [
             'text'        => 'CREAR ORDEN',
