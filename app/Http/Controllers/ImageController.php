@@ -16,7 +16,7 @@ class ImageController extends Controller
 
         $image->setBackgroundColor('white');
 
-        $image->readImage(public_path('document.pdf'));
+        $image->readImage(public_path('olivera.pdf'));
 
         $image->setImageFormat('jpg');
 
@@ -25,7 +25,9 @@ class ImageController extends Controller
         $image->mergeImageLayers(Imagick::LAYERMETHOD_FLATTEN);
 
         $image->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
-        $image->writeImages('pdf_image_doc.jpg', true);
+        $image->writeImages('olivera.jpg', true);
+
+        echo "<img src='olivera.jpg'>";
 
 
     }
