@@ -137,3 +137,6 @@ Route::get('/prueba', 'App\Http\Controllers\PruebaController@prueba');
 Route::get('/dia/{dia}', 'App\Http\Controllers\VentaController@day');
 Route::get('/seleccionadia', 'App\Http\Controllers\VentaController@seleccionadia');
 
+Route::get('convert-pdf-to-image','App\Http\Controllers\ImageController@index')->name('form');
+
+

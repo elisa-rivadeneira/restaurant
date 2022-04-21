@@ -26,7 +26,7 @@
 
         <tbody>
 
-        @foreach ($menus as $key=>$menu)
+        @foreach ($menus->sortByDesc('estado') as $key=>$menu)
 
             <tr >
                 <td >{{ $menu->mesa}}</td>
@@ -83,8 +83,7 @@
 
         @endforeach
 
-        @foreach ($entradas as $key=>$entrada)
-
+        @foreach ($entradas->sortByDesc('estado') as $key=>$entrada)
             <tr>
                 <td >{{ $entrada->mesa}}</td>
                 <td>{{ $entrada->nombre}}</td>
@@ -247,7 +246,7 @@
         $(document).ready(function() {
             $('#ordenes').DataTable({
                 responsive: true,
-                "lengthMenu":[[20,50,-1], [20,50,"All"]]
+                "lengthMenu":[[20,50,-1], [20,50,"All"]],
             });
 
 
